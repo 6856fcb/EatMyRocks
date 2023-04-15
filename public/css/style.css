@@ -1,0 +1,81 @@
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .header ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header ul li {
+    margin-left: 1rem;
+  }
+  
+  .header ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Products */
+  .product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+  
+  .product-item {
+    width: 25%;
+    margin: 1rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+  
+  .product-item h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .product-item p {
+    margin: 0.5rem 0;
+  }
+  
+  /* Recipes */
+  .recipe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+  
+  .recipe-item {
+    width: 25%;
+    margin: 1rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+  
+  .recipe-item h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .recipe-item p {
+    margin: 0.5rem 0;
+  }
+  

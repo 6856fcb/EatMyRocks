@@ -1,0 +1,49 @@
+extends layouts/layout
+
+block content
+  header
+    .header-left
+      h1 My Webshop
+    .header-right
+      i.fas.fa-shopping-cart
+      i.fas.fa-search
+  nav
+    ul
+      li
+        a(href='#') Home
+      li
+        a(href='#') Products
+      li
+        a(href='#') Recipes
+  main
+    section
+      h2 Featured Products
+      .product-list
+        each product in products
+          .product
+            h3= product.name
+            p= product.description
+            p Price: $#{product.price}
+      .view-all
+        a(href='#') View All Products
+    section
+      h2 Featured Recipes
+      .recipe-list
+        each recipe in recipes
+          .recipe
+            h3= recipe.name
+            p= recipe.description
+            ul
+              li ingredient
+          p= recipe.instructions
+      .view-all
+        a(href='#') View All Recipes
+  footer
+    p Copyright © 2023 My Webshop
+    ul
+      li
+        a(href='#') Terms & Conditions
+      li
+        a(href='#') Privacy Policy
+      li
+        a(href='#') Contact Us
