@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+
+// BSP verwendung vom Router
 router.get('/', (req, res) => {
     try {
       res.render('index', { 
-        title: 'My Webshop',
+        title: 'EatMyRocks',
         icons: ['icon1.png', 'icon2.png', 'icon3.png'],
         references: ['About Us', 'Contact', 'FAQ'],
         products: [
