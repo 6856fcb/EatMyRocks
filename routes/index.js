@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
-// BSP verwendung vom Router
 router.get('/', (req, res) => {
     try {
       res.render('index', { 
@@ -13,24 +11,26 @@ router.get('/', (req, res) => {
           { 
             title: 'Product 1',
             description: 'This is the description of product 1.',
-            image: 'product1.jpg'
+            image: 'images/stone2.jpg',
+            price: 150
           },
           {
             title: 'Product 2',
             description: 'This is the description of product 2.',
-            image: 'product2.jpg'
+            image: 'images/rock1.jpg',
+            price: 150
           }
         ],
         recipes: [
           {
             title: 'Recipe 1',
             description: 'This is the description of recipe 1.',
-            image: 'recipe1.jpg'
+            image: 'images/recipe1.jpg'
           },
           {
             title: 'Recipe 2',
             description: 'This is the description of recipe 2.',
-            image: 'recipe2.jpg'
+            image: 'images/recipe2.jpg'
           }
         ]
       });
