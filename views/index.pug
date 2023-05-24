@@ -8,7 +8,6 @@ block content
       i.fas.fa-shopping-cart
       i.fas.fa-search
     .header-center
-      h1 -rocks are delicious
   nav
     ul
       li
@@ -23,7 +22,8 @@ block content
       .product-list
         each product in products
           .product
-            h3= product.name
+            img(src=product.image alt=product.title)
+            h3= product.title
             p= product.description
             p Price: $#{product.price}
       .view-all
@@ -33,19 +33,12 @@ block content
       .recipe-list
         each recipe in recipes
           .recipe
-            h3= recipe.name
+            img(src=recipe.image alt=recipe.title)
+            h3= recipe.title
             p= recipe.description
             ul
               li ingredient
           p= recipe.instructions
       .view-all
         a(href='#') View All Recipes
-  footer
-    p Copyright © 2023 EatMyRocks
-    ul
-      li
-        a(href='#') Terms & Conditions
-      li
-        a(href='#') Privacy Policy
-      li
-        a(href='#') Contact Us
+  

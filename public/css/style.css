@@ -1,83 +1,244 @@
-/* Header */
-.header {
-    display: flex;
-    justify-content: space-between;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: none;
+  }
+
+  .header-left,
+  .header-right,
+  .header-center {
+    flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    background-color: #333;
-    color: #fff;
   }
-  
-  .header h1 {
-    font-size: 3rem;
-    margin: 0;
+
+  .header-right {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
-  
-  .header ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .header ul li {
-    margin-left: 1rem;
-  }
-  
-  .header ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  /* Products */
-  .product {
-    display: flex;
-    justify-content: center;
+
+  nav ul {
+    flex-direction: column;
     align-items: center;
+  }
+
+  nav li {
+    margin: 0.5rem;
+  }
+
+  main section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-list,
+  .recipe-list {
     flex-wrap: wrap;
-    margin: 2rem 0;
-    padding: 20px;
-    background-color: aquamarine;
+    justify-content: center;
   }
-  
-  .product-item {
-    width: 25%;
-    margin: 1rem;
-    border: 1px solid #ccc;
-    padding: 1rem;
-  }
-  
-  .product-item h2 {
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  
-  .product-item p {
-    margin: 0.5rem 0;
-  }
-  
-  /* Recipes */
+
+  .product,
   .recipe {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 2rem 0;
+    width: 80%;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: solid thin var(--gray);
   }
-  
-  .recipe-item {
-    width: 25%;
-    margin: 1rem;
-    border: 1px solid #ccc;
-    padding: 1rem;
-  }
-  
-  .recipe-item h2 {
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  
-  .recipe-item p {
-    margin: 0.5rem 0;
-  }
-  
+
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+header {
+  display: flex;
+}
+
+
+.header-left {
+   display : flex; 
+   align-items : center; 
+}
+
+
+h1 {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : bold; 
+   font-size :3rem; 
+   color : var(--dark-gray); 
+}
+
+
+.header-right {
+   display : flex; 
+   align-items : center; 
+}
+
+
+i.fas.fa-shopping-cart,
+i.fas.fa-search {
+   font-size :2rem; 
+   color : var(--dark-gray); 
+   margin-left :1rem; 
+}
+
+
+.header-center {
+   display : flex; 
+   justify-content : center; 
+   flex-grow :1; 
+}
+
+
+nav ul {
+   display : flex; 
+   list-style-type : none; 
+}
+
+
+nav li {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : normal; 
+   font-size :1.2rem; 
+   color : var(--dark-gray); 
+   margin-left :1rem; 
+}
+
+
+main section {
+   display : flex; 
+   margin-top :4rem; 
+}
+
+
+h2 {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : bold; 
+   font-size :2.5rem; 
+   color : var(--dark-gray); 
+}
+
+
+.product-list {
+   display : flex; 
+}
+
+
+.product {
+   width :30%; 
+}
+
+
+.product h3 {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : bold; 
+   font-size :1.8rem;
+}
+
+
+.product p {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : normal; 
+   font-size :1.2rem; 
+   color : var(--dark-gray); 
+   line-height :1.5; 
+}
+
+
+.product p:last-child {
+   font-weight : bold; 
+}
+
+
+.view-all {
+   display : flex; 
+   justify-content : center; 
+}
+
+
+.view-all a {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : normal; 
+   font-size :1.2rem; 
+   color : var(--dark-gray); 
+}
+
+
+.recipe-list {
+   display : flex; 
+}
+
+
+.recipe {
+   width :30%; 
+}
+
+
+.recipe h3 {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : bold; 
+   font-size :1.8rem; 
+   color : var(--dark-gray); 
+}
+
+
+.recipe p {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : normal; 
+   font-size :1.2rem; 
+   color : var(--dark-gray); 
+   line-height :1.5; 
+}
+
+
+.recipe ul {
+   list-style-type : none; 
+}
+
+.recipe li {
+   font-family : 'Roboto', sans-serif; 
+   font-weight : normal; 
+   font-size :1.2rem; 
+   color : var(--dark-gray); 
+}
+
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  background-color: var(--gray);
+  padding: 2rem;
+}
+
+
+footer li {
+  margin-left: 1rem;
+}
+
+footer a {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+}
+
+
+footer p {
+  text-align: center;
+  background-color: var(--dark-gray);
+  color: var(--white);
+  padding: 1rem;
+}

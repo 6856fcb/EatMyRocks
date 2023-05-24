@@ -1,0 +1,104 @@
+doctype html
+html
+  head
+    // Link to the css file
+    link(rel="stylesheet" href="style.css")
+  body
+    // Header section
+    .header
+      .container
+        h1.logo My Website
+        ul.nav
+          li.nav-item Home
+          li.nav-item About
+          li.nav-item Services
+          li.nav-item Contact
+    // Hero section
+    .hero
+      img.hero-image(src="hero.jpg" alt="Hero image")
+      .hero-box
+        h2.hero-title Welcome to My Website
+        p.hero-text This is a simple yet beautiful responsive website template that you can use for your own project. It has a logo, a navigation bar, a hero section with a large image and a box with text, some articles or products from the store with pictures and text on top, a newsletter section and a footer.
+    // Articles section
+    .articles
+      .container
+        .article
+          img.article-image(src="article1.jpg" alt="Article 1 image")
+          h3.article-title Article 1 Title
+        .article
+          img.article-image(src="article2.jpg" alt="Article 2 image")
+          h3.article-title Article 2 Title
+        .article
+          img.article-image(src="article3.jpg" alt="Article 3 image")
+          h3.article-title Article 3 Title
+    // Newsletter section
+    .newsletter
+      .container
+        h2.newsletter-title Subscribe to Our Newsletter
+        form.newsletter-form(method="post" action="#")
+          input.newsletter-input(type="email" name="email" placeholder="Enter your email")
+          button.newsletter-button(type="submit") Subscribe
+    // Footer section
+    .footer
+      .container
+        .footer-column
+          h4.footer-heading Contact
+          p.footer-link Questions? Go ahead.
+          form.footer-form(method="post" action="#")
+            p 
+              input.footer-input(type="text" name="name" placeholder="Name" required)
+            p 
+              input.footer-input(type="email" name="email" placeholder="Email" required)
+            p 
+              input.footer-input(type="text" name="subject" placeholder="Subject" required)
+            p 
+              input.footer-input(type="text" name="message" placeholder="Message" required)
+            button.footer-button(type="submit") Send
+
+        .footer-column
+          h4.footer-heading About
+          p.footer-link 
+            a(href="#") About us
+          p.footer-link 
+            a(href="#") We're hiring
+          p.footer-link 
+            a(href="#") Support
+          p.footer-link 
+            a(href="#") Find store
+          p.footer-link 
+            a(href="#") Shipment
+
+        .footer-column
+          p.footer-link 
+            a(href="#") Payment
+          p.footer-link 
+            a(href="#") Gift card
+          p.footer-link 
+            a(href="#") Return
+          p.footer-link 
+            a(href="#") Help
+        .footer-column
+          h4.footer-heading Store
+          p.footer-link 
+            i.fa.fa-fw.fa-map-marker Store Address
+          p.footer-link 
+            i.fa.fa-fw.fa-phone 0044123123
+          p.footer-link 
+            i.fa.fa-fw.fa-envelope ex@mail.com
+          h4.footer-heading We accept
+          p.footer-link 
+            i.fa.fa-fw.fa-cc-amex Amex
+          p.footer-link 
+            i.fa.fa-fw.fa-credit-card Credit Card
+          p.footer-link 
+            i.fa.fa-facebook-official.w3-hover-opacity.w3-large Facebook
+          p.footer-link 
+            i.fa.fa-instagram.w3-hover-opacity.w3-large Instagram
+          p.footer-link 
+            i.fa.fa-snapchat.w3-hover-opacity.w3-large Snapchat
+          p.footer-link 
+            i.fa.fa-pinterest-p.w3-hover-opacity.w3-large Pinterest
+          p.footer-link 
+            i.fa.fa-twitter.w3-hover-opacity.w3-large Twitter
+          p.footer-link 
+            i.fa.fa-linkedin.w3-hover-opacity.w3-large LinkedIn
