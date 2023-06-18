@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
+const products = require('./product-model.js');
 
 // set up view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -22,4 +23,9 @@ app.use('/', indexRouter);
 app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
+
+app.get('/product', function (req, res) {
+  const productJSON = Object.values(products);
+  res.json(productJSON);
+})
 
