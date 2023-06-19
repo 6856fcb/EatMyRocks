@@ -1,69 +1,7 @@
-//------------------------
-const fetch = require('node-fetch');
-
-require('dotenv').config();
-//-----------------
-
-const express = require('express');
+import express from 'express';
+import fetch from 'node-fetch';
+import 'dotenv/config';
 const app = express();
-const path = require('path');
-const bodyParser = require('body-parser');
-const indexRouter = require('./routes/index');
-const products = require('./product-model.js');
-
-
-// set up view engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// parse incoming requests
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// set up routes
-app.use('/', indexRouter);
-
-// start server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
-
-app.get('/product', function (req, res) {
-  const productJSON = Object.values(products);
-  res.json(productJSON);
-})
-
-app.get('/pay', function (req, res){
-  res.render('payment');
-})
-
-app.get('/pp', function (req, res){
-  res.render('privacypolicy');
-})
-
-app.get('/tc', function (req, res){
-  res.render('termsconditions');
-})
-
-app.get('/cu', function (req, res){
-  res.render('contactus');
-})
-
-app.get('/payment', function(req, res) {
-  const filePath = path.join(__dirname, 'views', 'payment.html');
-  res.sendFile(filePath);
-});
-
-
-
-
-//-------------------------------------
-
-
-//const app = express();
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
@@ -157,16 +95,16 @@ app.post('/complete_order', (req, res) => {
 // Helper / Utility functions
 
 //Servers the index.html file
-app.get('/payment', (req, res) => {
-    res.sendFile(process.cwd() + '/payment.html');
+app.get('/', (req, res) => {
+    res.sendFile(process.cwd() + '/index.html');
 });
 //Servers the style.css file
 app.get('/style.css', (req, res) => {
     res.sendFile(process.cwd() + '/style.css');
 });
 //Servers the script.js file
-app.get('/paypal/paypalscript.js', (req, res) => {
-    res.sendFile(process.cwd() + '/paypal/paypalscript.js');
+app.get('/script.js', (req, res) => {
+    res.sendFile(process.cwd() + '/script.js');
 });
 
 //PayPal Developer YouTube Video:
@@ -189,6 +127,6 @@ function get_access_token() {
         })
 }
 
-/*app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
-})*/
+})
