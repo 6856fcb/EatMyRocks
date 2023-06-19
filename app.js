@@ -29,3 +29,18 @@ app.get('/product', function (req, res) {
   res.json(productJSON);
 })
 
+app.get('/pay', function (req, res){
+  res.render('payment');
+})
+
+app.get('/pp', function (req, res){
+  res.render('privacypolicy');
+})
+
+app.get('/tc', function (req, res){
+  res.render('termsconditions');
+})
+
+app.get('/cu', function (req, res){
+  res.render('contactus');
+})
