@@ -1,9 +1,6 @@
 //------------------------
 const fetch = require('node-fetch');
-
 require('dotenv').config();
-//-----------------
-
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -13,12 +10,8 @@ const products = require('./product-model.js');
 
 // parse incoming requests
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // serve static files
-app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
-app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
-app.use(express.static(path.join(__dirname, 'public', 'html')));
 
 // set up routes
 app.use('/', indexRouter);
