@@ -11,11 +11,6 @@ const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const products = require('./product-model.js');
 
-
-// set up view engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
 // parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
