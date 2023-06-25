@@ -1,31 +1,53 @@
-//------------------------
 const fetch = require('node-fetch');
 require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const indexRouter = require('./routes/index');
-const products = require('./product-model.js');
+const products = require('./product.js');
 
 // parse incoming requests
 app.use(bodyParser.json());
 
 // serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use(express.static(path.join(__dirname, 'public', 'html')));
 
-// set up routes
-app.use('/', indexRouter);
+// Add a GET /applications endpoint
+app.get('/applications', (req, res) => {
+  const applications = [];
 
+  for (const productID in products) {
+    const stone = products[productID];
+    for (const application of stone.applications) {
+      if (!applications.includes(application)) {
+        applications.push(application);
+      }
+    }
+  }
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
-  });
-  
-// start server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+  applications.sort();
+  res.send(applications);
 });
 
+app.get('/stones', function (req, res) {
+  let stones = Object.values(products);
+  let application = req.query.application;
+  if (application) {
+    let filteredStones = [];
+    for (let i = 0; i < stones.length; i++) {
+      if (stones[i].applications.includes(application)) {
+        filteredStones.push(stones[i]);
+      }
+    }
+    stones = filteredStones;
+  }
+  res.send(stones);
+});
+
+/*
 app.get('/product', function (req, res) {
   const productJSON = Object.values(products);
   res.json(productJSON);
@@ -53,7 +75,7 @@ app.get('/payment', function(req, res) {
 });
 
 
-
+*/
 
 //-------------------------------------
 
@@ -184,6 +206,6 @@ function get_access_token() {
         })
 }
 
-/*app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
-})*/
+})
