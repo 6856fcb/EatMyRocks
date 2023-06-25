@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../public/css/index.css">
-    <link rel="stylesheet" href="../public/css/aboutus.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/aboutus.css">
     <title>Eat my Rocks</title>
 </head>
 
 <body>
     <header>
-        <div class="header-left"><img src="../public/images/logo_transparent2.png" alt="logo" style="height: 100px;">
+        <div class="header-left"><img src="../images/logo_transparent2.png" alt="logo" style="height: 100px;">
         </div>
         <nav class="header-center">
             <ul>
@@ -34,32 +34,32 @@
         <div class="about-section">
           <h1>About Us</h1>
           <div class="content-section">
-            <div class="content-img"><img src="../public/images/logo_transparent2.png" alt="Company History"></div>
+            <div class="content-img"><img src="../images/logo_transparent2.png" alt="Company History"></div>
             <div class="content-heading"><h2>Company History</h2></div>
             <div class="content-text"><p>Once upon a time, a long time ago, Karl, Berdan, Alex, and Khaled came up with the idea to turn the world of culinary delights upside down. In a night full of sarcastic jokes and absurd ideas, EatMyRocks GmbH was born. We asked ourselves: Why should we only eat on plates when we can also devour rocks? And so our adventure began, creating and selling rocks for consumption.</p></div>
           </div>
           <div class="content-section">
-            <div class="content-img"><img src="../public/images/value.jpg" alt="Mission and Values"></div>
+            <div class="content-img"><img src="../images/value.jpg" alt="Mission and Values"></div>
             <div class="content-heading"><h2>Mission and Values</h2></div>
             <div class="content-text"><p>Our values are as unique as our rocks. At EatMyRocks GmbH, we stand for creative craziness, boundless curiosity, and the courage to think outside the plate (or rather, outside the rock). Our mission is to bring a smile to your face by offering you the most absurd and delicious rocks to eat that you have ever tasted.</p></div>
           </div>
           <div class="content-section">
-            <div class="content-img"><img src="../public/images/team.webp" alt="Team Introduction"></div>
+            <div class="content-img"><img src="../images/team.webp" alt="Team Introduction"></div>
             <div class="content-heading"><h2>Team Introduction</h2></div>
             <div class="content-text"><p>Meet our team of rock grinders who are also the best chefs in the world. Karl, the Master of Stoniness, transforms ordinary rocks into edible masterpieces. Berdan, the Taste Enchanter, knows the secret flavors of rocks and creates taste experiences that will leave you speechless. Alex, the Rock Architect, designs extravagant rock structures that will amaze your eyes. And Khaled, the Rock Philosopher, contemplates the essence of rocks and imparts to you a deep understanding of the edible rock world.</p></div>
           </div>
           <div class="content-section">
-            <div class="content-img"><img src="../public/images/stone1.jpg" alt="Products and Services"></div>
+            <div class="content-img"><img src="../images/stone1.jpg" alt="Products and Services"></div>
             <div class="content-heading"><h2>Products and Services</h2></div>
             <div class="content-text"><p>Welcome to our rock oasis! We offer you a diverse selection of edible rocks that will send your taste buds on a rollercoaster ride. Enjoy our salty rocks with a hint of irony or let yourself be seduced by our chocolatey rocks with a sarcastic twist. Each rock is handcrafted and enhanced with a touch of madness to provide an unparalleled culinary experience.</p></div>
           </div>
           <div class="content-section">
-            <div class="content-img"><img src="../public/images/stone2.jpg" alt="Achievements and Awards"></div>
+            <div class="content-img"><img src="../images/stone2.jpg" alt="Achievements and Awards"></div>
             <div class="content-heading"><h2>Achievements and Awards</h2></div>
             <div class="content-text"><p>Although we haven't received any official awards yet (apparently, the world hasn't fully grasped how delicious rocks can be), our customers are thrilled with our unique creations. We have received numerous enthusiastic feedbacks describing our rocks as "mind-blowing," "absurdly delicious," and "a revolution for the palate."</p></div>
           </div>
           <div class="content-section">
-            <div class="content-img"><img src="../public/images/stone3.jpg" alt="Customer Testimonials"></div>
+            <div class="content-img"><img src="../images/stone3.jpg" alt="Customer Testimonials"></div>
             <div class="content-heading"><h2>Customer Testimonials</h2></div>
             <div class="content-text">
               <blockquote>
@@ -114,19 +114,7 @@
     var isLoggedIn = false;
   
     // Select elements
-    var heartIcon = document.querySelector('.fa-regular.fa-heart');
     var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
-  
-    // Handle click event for heart icon
-    heartIcon.addEventListener('click', function() {
-      if (isLoggedIn) {
-        // Redirect to favorites page
-        window.location.href = "favorites.html";
-      } else {
-        // Redirect to login/registration page
-        window.location.href = "login.html";
-      }
-    });
   
     // Handle click event for cart icon
     cartIcon.addEventListener('click', function() {

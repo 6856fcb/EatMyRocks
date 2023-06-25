@@ -16,11 +16,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use(express.static(path.join(__dirname, 'public', 'html')));
 
 // set up routes
 app.use('/', indexRouter);
 
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
+  });
+  
 // start server
 app.listen(3000, () => {
   console.log('Server started on port 3000');
@@ -48,7 +55,7 @@ app.get('/cu', function (req, res){
 })
 
 app.get('/payment', function(req, res) {
-  const filePath = path.join(__dirname, 'views', 'payment.html');
+  const filePath = path.join(__dirname, 'public', 'html', 'payment.html');
   res.sendFile(filePath);
 });
 

@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../public/css/index.css">
-    <link rel="stylesheet" href="../public/css/stoneguide.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/stoneguide.css">
     <title>Stone Guide</title>
 </head>
 
 <body>
     <header>
-        <div class="header-left"><img src="../public/images/logo_transparent2.png" alt="logo" style="height: 100px;">
+        <div class="header-left"><img src="../images/logo_transparent2.png" alt="logo" style="height: 100px;">
         </div>
         <nav class="header-center">
             <ul>
@@ -35,7 +35,7 @@
             <div class="guide-container">
                 <div class="guide-item">
                     <div class="image-container">
-                      <img class="guide-image" src="../public/images/guide1.jpg" alt="Bild 1">
+                      <img class="guide-image" src="../images/guide1.jpg" alt="Bild 1">
                     </div>
                     <div class="text-container">
                         <h2>Willkommen im Stone Guide!</h2>
@@ -48,12 +48,12 @@
                       <p class="guide-text">Entdecken Sie bei uns eine Vielzahl von essbaren Steinen, die speziell für den kulinarischen Genuss entwickelt wurden. Von salzigen Mineralsteinen bis hin zu süßen Schokoladensteinen bieten wir Ihnen eine breite Palette an Geschmacksrichtungen und Texturen. Erfahren Sie mehr über die verschiedenen Arten von Steinen und finden Sie heraus, welche am besten zu Ihren kulinarischen Vorlieben passen.</p>
                     </div>
                     <div class="image-container">
-                      <img class="guide-image" src="../public/images/guide2.jpg" alt="Bild 2">
+                      <img class="guide-image" src="../images/guide2.jpg" alt="Bild 2">
                     </div>
                   </div>
                   <div class="guide-item">
                     <div class="image-container">
-                      <img class="guide-image" src="../public/images/guide3.jpg" alt="Bild 3">
+                      <img class="guide-image" src="../images/guide3.jpg" alt="Bild 3">
                     </div>
                     <div class="text-container">
                         <h2>Eigenschaften und Geschmacksprofile</h2>
@@ -66,12 +66,12 @@
                       <p class="guide-text">Der Stone Guide zeigt Ihnen die vielseitigen Anwendungsmöglichkeiten unserer essbaren Steine. Ob als dekorative Elemente, die Ihren Speisen einen Hauch von Eleganz verleihen, oder als innovative Kochwerkzeuge, die neue kulinarische Horizonte eröffnen - wir geben Ihnen kreative Ideen und Inspirationen, wie Sie die Steine in Ihrer Küche verwenden können. Entdecken Sie unkonventionelle Präsentationen, einzigartige Geschmackskombinationen und überraschende Gerichte, die Ihre Gäste begeistern werden.</p>
                     </div>
                     <div class="image-container">
-                      <img class="guide-image" src="../public/images/guide4.jpg!d" alt="Bild 4">
+                      <img class="guide-image" src="../images/guide4.jpg!d" alt="Bild 4">
                     </div>
                   </div>
                   <div class="guide-item">
                     <div class="image-container">
-                      <img class="guide-image" src="../public/images/guide5.jpeg" alt="Bild 5">
+                      <img class="guide-image" src="../images/guide5.jpeg" alt="Bild 5">
                     </div>
                     <div class="text-container">
                         <h2>Reinigung, Aufbewahrung und Zubereitung</h2>
@@ -84,7 +84,7 @@
                       <p class="guide-text">Tauchen Sie ein in unseren Stone Guide und entdecken Sie die faszinierende Welt der essbaren Steine. Lassen Sie sich von ihrer Schönheit und ihrem geschmacklichen Potenzial inspirieren und erfahren Sie alles, was Sie über ihre Verwendung und Verarbeitung wissen müssen. Wir sind sicher, dass Sie von den unendlichen Möglichkeiten begeistert sein werden, die unsere Steine in Ihre kulinarischen Abenteuer einbringen können. <br>Genießen Sie die Reise und lassen Sie Ihrer Kreativität freien Lauf!</p>
                     </div>
                     <div class="image-container">
-                      <img class="guide-image" src="../public/images/guide6.jpg" alt="Bild 6">
+                      <img class="guide-image" src="../images/guide6.jpg" alt="Bild 6">
                     </div>
                   </div>
             </div>
@@ -120,19 +120,7 @@
     var isLoggedIn = false;
   
     // Elemente auswählen
-    var heartIcon = document.querySelector('.fa-regular.fa-heart');
     var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
-  
-    // Klickereignis für Herz-Icon handhaben
-    heartIcon.addEventListener('click', function() {
-      if (isLoggedIn) {
-        // Weiterleitung zur Favoriten-Seite
-        window.location.href = "favorites.html";
-      } else {
-        // Weiterleitung zur Login/Registrierungsseite
-        window.location.href = "login.html";
-      }
-    });
   
     // Klickereignis für Warenkorb-Icon handhaben
     cartIcon.addEventListener('click', function() {

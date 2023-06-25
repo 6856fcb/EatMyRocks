@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../public/css/index.css">
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/home.css">
     <title>Eat my Rocks</title>
 </head>
 
 <body>
     <header>
-        <div class="header-left"><img src="../public/images/logo_transparent2.png" alt="logo" style="height: 100px;">
+        <div class="header-left"><img src="../images/logo_transparent2.png" alt="logo" style="height: 100px;">
         </div>
         <nav class="header-center">
             <ul>
@@ -45,7 +45,7 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="aboutus.html">About Us</a></li>
                 <li><a href="stoneguide.html">Stone Guide</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="">Recipes</a></li>
             </ul>
         </div>
         <div class="footer-right">
@@ -64,19 +64,7 @@
     var isLoggedIn = false;
   
     // Elemente auswählen
-    var heartIcon = document.querySelector('.fa-regular.fa-heart');
     var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
-  
-    // Klickereignis für Herz-Icon handhaben
-    heartIcon.addEventListener('click', function() {
-      if (isLoggedIn) {
-        // Weiterleitung zur Favoriten-Seite
-        window.location.href = "favorites.html";
-      } else {
-        // Weiterleitung zur Login/Registrierungsseite
-        window.location.href = "login.html";
-      }
-    });
   
     // Klickereignis für Warenkorb-Icon handhaben
     cartIcon.addEventListener('click', function() {

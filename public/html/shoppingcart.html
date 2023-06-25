@@ -64,19 +64,7 @@
     var isLoggedIn = false;
   
     // Elemente auswählen
-    var heartIcon = document.querySelector('.fa-regular.fa-heart');
     var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
-  
-    // Klickereignis für Herz-Icon handhaben
-    heartIcon.addEventListener('click', function() {
-      if (isLoggedIn) {
-        // Weiterleitung zur Favoriten-Seite
-        window.location.href = "favorites.html";
-      } else {
-        // Weiterleitung zur Login/Registrierungsseite
-        window.location.href = "login.html";
-      }
-    });
   
     // Klickereignis für Warenkorb-Icon handhaben
     cartIcon.addEventListener('click', function() {

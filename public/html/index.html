@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../public/css/index.css">
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/home.css">
     <title>Eat my Rocks</title>
 </head>
 
 <body>
     <header>
-        <div class="header-left"><img src="../public/images/logo_transparent2.png" alt="logo" style="height: 100px;">
+        <div class="header-left"><img src="../images/logo_transparent2.png" alt="logo" style="height: 100px;">
         </div>
         <nav class="header-center">
             <ul>
@@ -93,7 +93,7 @@
               <div class="bottom-box">
                 <div class="box-content">
                   <div class="box-img">
-                    <img src="../public/images/quarry.jpg" alt="Quarry">
+                    <img src="../images/quarry.jpg" alt="Quarry">
                   </div>
                   <div class="box-title">
                     <h2>Our Guarantee</h2>
@@ -125,7 +125,7 @@
               <div class="bottom-box">
                 <div class="box-content">
                   <div class="box-img">
-                    <img src="../public/images/chalcedony-precious-stones-stone-precious-stone.jpg" alt="Chalcedony">
+                    <img src="../images/chalcedony-precious-stones-stone-precious-stone.jpg" alt="Chalcedony">
                   </div>
                   <div class="box-title">
                     <h2>Unique Recipes</h2>
@@ -144,7 +144,7 @@
 
         <div class="newsletter-container">
             <div class="newsletter-background">
-                <img src="../public/images/newsletter-background.jpg" alt="Background Image">
+                <img src="../images/newsletter-background.jpg" alt="Background Image">
               </div>
               <div class="newsletter-overlay">
                 <h2>Newsletter abonnieren</h2>
@@ -175,8 +175,7 @@
             <h3>My Account</h3>
             <ul>
                 <li><a href="">My Account</a></li>
-                <li><a href="">My Cart</a></li>
-                <li><a href="">Wishlist</a></li>
+                <li><a href="shoppingcart.html">My Cart</a></li>
                 <li><a href="">Order History</a></li>
             </ul>
         </div>
@@ -187,19 +186,7 @@
   var isLoggedIn = false;
 
   // Elemente auswählen
-  var heartIcon = document.querySelector('.fa-regular.fa-heart');
   var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
-
-  // Klickereignis für Herz-Icon handhaben
-  heartIcon.addEventListener('click', function() {
-    if (isLoggedIn) {
-      // Weiterleitung zur Favoriten-Seite
-      window.location.href = "favorites.html";
-    } else {
-      // Weiterleitung zur Login/Registrierungsseite
-      window.location.href = "login.html";
-    }
-  });
 
   // Klickereignis für Warenkorb-Icon handhaben
   cartIcon.addEventListener('click', function() {
