@@ -1,0 +1,52 @@
+
+  body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
+    grid-template-columns: 1fr 3fr; /* Nav, Main */
+      
+      
+
+    /* Define grid areas */
+    grid-template-areas:
+      "header header"
+      "nav main"
+      "footer footer";
+  }
+  
+  header {
+    grid-area: header;
+  }
+  
+  
+  main {
+    grid-area: main;
+  }
+  
+  footer {
+    grid-area: footer;
+  }
+  
+  
+main {
+    margin-top: 170px; /* Höhe des Headers anpassen */
+    margin-bottom: 50px;
+
+
+    
+  }
+
+  article {
+    margin-bottom: 70px; 
+  }
+
+  h1{
+    font-size: 45px;
+    margin-bottom: 3px;
+  }
+
+  .stone{
+    font-size: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  

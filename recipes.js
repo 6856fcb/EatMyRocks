@@ -1,5 +1,6 @@
 module.exports = {
   1234567: {
+    recipeID: "1234567",
     name: "Limestone Dessert",
     stone: "Limestone",
     ingredients: [
@@ -19,6 +20,7 @@ module.exports = {
     cuisine: "Dessert",
   },
   2345678: {
+    recipeID: "2345678",
     name: "Basalt Chocolate Cake",
     stone: "Basalt",
     ingredients: [
@@ -44,6 +46,7 @@ module.exports = {
     cuisine: "Dessert",
   },
   3456789: {
+    recipeID: "3456789",
     name: "Slate Cheese Board",
     stone: "Slate",
     ingredients: ["200g Slate", "Assorted Cheese", "Grapes", "Nuts", "Honey"],
@@ -56,6 +59,7 @@ module.exports = {
     cuisine: "Appetizer",
   },
   4567890: {
+    recipeID: "4567890",
     name: "Marble Pastry",
     stone: "Marble",
     ingredients: [
@@ -79,6 +83,7 @@ module.exports = {
     cuisine: "Dessert",
   },
   5678901: {
+    recipeID: "5678901",
     name: "Granite Soup",
     stone: "Granite",
     ingredients: [
@@ -105,6 +110,7 @@ module.exports = {
     cuisine: "Soup",
   },
   6789012: {
+    recipeID: "6789012",
     name: "Sandstone Salad",
     stone: "Sandstone",
     ingredients: [
@@ -127,6 +133,7 @@ module.exports = {
     cuisine: "Salad",
   },
   7890123: {
+    recipeID: "7890123",
     name: "Quartzite Dessert",
     stone: "Quartzite",
     ingredients: [
@@ -146,6 +153,7 @@ module.exports = {
     cuisine: "Dessert",
   },
   8901234: {
+    recipeID: "8901234",
     name: "Quartz Beverage Infusion",
     stone: "Quartz",
     ingredients: [
@@ -165,7 +173,9 @@ module.exports = {
     cuisine: "Beverage",
   },
   1234567: {
+    recipeID: "1234567",
     name: "Amethyst Berry Smoothie",
+    stone: "Amethyst",
     ingredients: [
       "200g Amethyst stones",
       "1 cup mixed berries",
@@ -183,7 +193,9 @@ module.exports = {
     cuisine: "Smoothie",
   },
   2345678: {
+    recipeID: "2345678",
     name: "Onyx Caramel Truffles",
+    stone: "Onyx",
     ingredients: [
       "200g Onyx stones",
       "1 cup heavy cream",
@@ -205,6 +217,7 @@ module.exports = {
     cuisine: "Dessert",
   },
   3456789: {
+    recipeID: "3456789",
     name: "Topaz Citrus Salad",
     ingredients: [
       "200g Topaz stones",
@@ -228,6 +241,7 @@ module.exports = {
     cuisine: "Salad",
   },
   4567890: {
+    recipeID: "4567890",
     name: "Ruby Berry Marinade",
     ingredients: [
       "200g Ruby stones",
@@ -251,6 +265,7 @@ module.exports = {
     cuisine: "Marinade",
   },
   9012345: {
+    recipeID: "9012345",
     name: "Jade Salad",
     stone: "Jade",
     ingredients: [
@@ -272,6 +287,7 @@ module.exports = {
     cuisine: "Salad",
   },
   1234560: {
+    recipeID: "1234560",
     name: "Obsidian Sushi",
     stone: "Obsidian",
     ingredients: [

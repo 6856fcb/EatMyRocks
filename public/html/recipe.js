@@ -1,4 +1,4 @@
-import { ElementBuilder, ParentChildBuilder } from "./builder.js";
+import { ElementBuilder, ParentChildBuilder } from "./recipeBuilder.js";
 
 class ParagraphBuilder extends ParentChildBuilder {
   constructor() {
@@ -24,20 +24,21 @@ class ListBuilder extends ElementBuilder {
   }
 }
 
-function appendStone(stone, element) {
-  new ElementBuilder("article").id(stone.productID)
-    .append(new ElementBuilder("img").with("src", stone.image))
-    .append(new ElementBuilder("h1").text(stone.name))
-    .append(new ParagraphBuilder().childClass("applications").items(stone.applications))
-    .append(new ParagraphBuilder().childClass("tasteProfile").items(stone.tasteProfile))
-    .append(new ParagraphBuilder().childClass("texture").items(stone.texture))
-    .append(new ElementBuilder("p").text(stone.description))
-    .append(new ElementBuilder("h2").pluralizedText("Nutritional Value", ""))
-    .append(new ListBuilder("ul").list(stone.nutritionalValues))
-    .append(new ElementBuilder("h3").text("Price: " + stone.price + "€"))
-    .appendTo(element);}
+function appendRecipe(recipe, element) {
+  new ElementBuilder("article").id(recipe.recipeID)
+    .append(new ElementBuilder("h1").text(recipe.name))
+    //.append(new ParagraphBuilder().childClass("stone").items(recipe.stone))
+    .append(new ElementBuilder("h2").pluralizedText("Ingredient", ""))
+    .append(new ListBuilder("ul").list(recipe.ingredients))
+    .append(new ElementBuilder("h2").pluralizedText("Instruction", ""))
+    .append(new ListBuilder("ul").list(recipe.instructions))
+    .append(new ElementBuilder("h2").text("Cuisine"))
+    .append(new ParagraphBuilder().childClass("cuisine").text(recipe.cuisine))
+    .appendTo(element);
+}
 
-function loadStones(application) {
+
+function loadRecipes(application) {
   const xhr = new XMLHttpRequest();
   xhr.onload = function () {
     const mainElement = document.querySelector("main");
@@ -47,19 +48,19 @@ function loadStones(application) {
     }
 
     if (xhr.status === 200) {
-      const stones = JSON.parse(xhr.responseText);
-      for (const stone of stones) {
-        appendStone(stone, mainElement)
+      const recipes = JSON.parse(xhr.responseText);
+      for (const recipe of recipes) {
+        appendRecipe(recipe, mainElement)
       }
     } else {
       mainElement.append(`Daten konnten nicht geladen werden, Status ${xhr.status} - ${xhr.statusText}`);
     }
   };
 
-  const url = new URL("/stones", location.href);
-  if (application != undefined) {
+  const url = new URL("/recipes", location.href);
+  /*if (application != undefined) {
     url.searchParams.set("application", application);
-  }
+  }*/
   xhr.open("GET", url);
   xhr.send();
 }
@@ -67,39 +68,17 @@ function loadStones(application) {
 window.onload = function () {
   const xhr = new XMLHttpRequest();
   xhr.onload = function () {
-    const listElement = document.querySelector("nav.filter-nav > ul");
+    //const listElement = document.querySelector("nav.filter-nav > ul");
 
     if (xhr.status === 200) {
-      const applications = JSON.parse(xhr.responseText);
-
-      const allButton = document.createElement("button");
-      allButton.textContent = "All";
-      allButton.addEventListener("click", function () {
-        loadStones();
-      });
-      const allLi = document.createElement("li");
-      allLi.appendChild(allButton);
-      listElement.appendChild(allLi);
-
-      for (let i = 0; i < applications.length; i++) {
-        const applicationButton = document.createElement("button");
-        applicationButton.textContent = applications[i];
-        applicationButton.addEventListener("click", function () {
-          loadStones(applications[i]);
-        });
-        const applicationLi = document.createElement("li");
-        applicationLi.appendChild(applicationButton);
-        listElement.appendChild(applicationLi);
-      }
-
-      const firstButton = document.querySelector("nav button");
-      if (firstButton) {
-        firstButton.click();
-      }
+      const recipesRes = JSON.parse(xhr.responseText);
+      //console.log(applications);
+      loadRecipes();
+      
     } else {
       document.querySelector("body").append(`Daten konnten nicht geladen werden, Status ${xhr.status} - ${xhr.statusText}`);
     }
   };
-  xhr.open("GET", "/applications");
+  xhr.open("GET", "/recipes");
   xhr.send();
 };
