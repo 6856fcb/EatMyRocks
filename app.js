@@ -5,6 +5,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const products = require('./product.js');
+const recipes = require('./recipes.js');
 
 // parse incoming requests
 app.use(bodyParser.json());
@@ -45,6 +46,12 @@ app.get('/stones', function (req, res) {
     stones = filteredStones;
   }
   res.send(stones);
+});
+
+app.get('/recipes', function (req, res){
+  const recipeJSON = Object.values(recipes);
+  //console.log(recipeJSON);
+  res.json(recipeJSON);
 });
 
 /*
