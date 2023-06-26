@@ -1,6 +1,5 @@
 module.exports = {
-    "rezepte": [
-      {
+  1234567: {
         "name": "Limestone-Dessert",
         "stone": "Limestone",
         "zutaten": [
@@ -18,7 +17,7 @@ module.exports = {
           "Vor dem Servieren mit Minzeblättern dekorieren."
         ]
       },
-      {
+      2345678: {
         "name": "Basalt-Chocolate Cake",
         "stone": "Basalt",
         "zutaten": [
@@ -42,7 +41,7 @@ module.exports = {
           "Den Kuchen abkühlen lassen und nach Belieben mit Schokoladenglasur oder Puderzucker garnieren."
         ]
       },
-      {
+      3456789: {
         "name": "Slate-Cheese Board",
         "stone": "Slate",
         "zutaten": [
@@ -59,7 +58,7 @@ module.exports = {
           "Den Slate als stilvolle Servierplatte für das Käsebrett verwenden."
         ]
       },
-      {
+      4567890: {
         "name": "Marble-Pastry",
         "stone": "Marble",
         "zutaten": [
@@ -81,7 +80,7 @@ module.exports = {
           "Die Marble-Pastries abkühlen lassen und servieren."
         ]
       },
-      {
+      5678901: {
         "name": "Granite-Soup",
         "stone": "Granite",
         "zutaten": [
@@ -106,7 +105,7 @@ module.exports = {
           "Die Granite-Soup in Schalen füllen und mit gehackter Petersilie garnieren."
         ]
       },
-      {
+      6789012: {
         "name": "Sandstone-Salad",
         "stone": "Sandstone",
         "zutaten": [
@@ -127,7 +126,7 @@ module.exports = {
           "Den Sandstone-Salat servieren."
         ]
       },
-      {
+      7890123: {
         "name": "Quartzite-Dessert",
         "stone": "Quartzite",
         "zutaten": [
@@ -145,7 +144,7 @@ module.exports = {
           "Vor dem Servieren mit frischen Früchten dekorieren."
         ]
       },
-      {
+      8901234: {
         "name": "Quartz-Beverage Infusion",
         "stone": "Quartz",
         "zutaten": [
@@ -163,7 +162,7 @@ module.exports = {
           "Die Quartz-Beverage Infusion gekühlt servieren."
         ]
       },
-      {
+      1234567: {
         "name": "Amethyst Berry Smoothie",
         "ingredients": [
         "200g Amethyst stones",
@@ -180,7 +179,7 @@ module.exports = {
         "Pour the Amethyst Berry Smoothie into glasses and serve chilled."
         ]
         },
-        {
+        2345678: {
         "name": "Onyx Caramel Truffles",
         "ingredients": [
         "200g Onyx stones",
@@ -201,7 +200,7 @@ module.exports = {
         "Store in an airtight container in the refrigerator until ready to serve."
         ]
         },
-        {
+        3456789: {
         "name": "Topaz Citrus Salad",
         "ingredients": [
         "200g Topaz stones",
@@ -223,7 +222,7 @@ module.exports = {
         "Serve chilled."
         ]
         },
-        {
+        4567890: {
         "name": "Ruby Berry Marinade",
         "ingredients": [
         "200g Ruby stones",
@@ -245,7 +244,7 @@ module.exports = {
         "Serve the cooked meat with additional marinade drizzled on top."
         ]
         },
-      {
+        9012345: {
         "name": "Jade-Salad",
         "stone": "Jade",
         "zutaten": [
@@ -265,7 +264,7 @@ module.exports = {
           "Den Jade-Salat servieren."
         ]
       },
-      {
+      1234560: {
         "name": "Obsidian-Sushi",
         "stone": "Obsidian",
         "zutaten": [
@@ -288,6 +287,5 @@ module.exports = {
           "Mit Sojasauce, Ingwer und Wasabi servieren."
         ]
       }
-    ]
   }
   

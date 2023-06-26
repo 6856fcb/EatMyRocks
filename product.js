@@ -250,59 +250,5 @@ module.exports = {
       fiber: "1 g",
       sodium: "140 mg"
     }
-  },
-  5678901: {
-    productID: "5678901",
-    image: "emerald.jpg",
-    name: "Emerald",
-    description: "Emerald stones offer a fresh and vibrant flavor with a hint of mint. They have a smooth texture and are commonly used for enhancing the taste of beverages and salads.",
-    tasteProfile: ["Fresh", "Vibrant", "Mint"],
-    texture: ["Smooth"],
-    applications: ["Beverages", "Salad", "Mocktails"],
-    price: 3.99,
-    nutritionalValues: {
-      calories: "85 kcal",
-      carbohydrates: "5 g",
-      protein: "3 g",
-      fat: "1 g",
-      fiber: "1 g",
-      sodium: "150 mg"
-    }
-  },
-  6789012: {
-    productID: "6789012",
-    image: "sapphire.jpg",
-    name: "Sapphire",
-    description: "Sapphire stones offer a unique and vibrant blueberry flavor. They have a slightly crunchy texture and are often used as a decorative element in desserts and beverages.",
-    tasteProfile: ["Blueberry"],
-    texture: ["Slightly Crunchy"],
-    applications: ["Dessert", "Beverages", "Mocktails"],
-    price: 4.49,
-    nutritionalValues: {
-      calories: "90 kcal",
-      carbohydrates: "6 g",
-      protein: "3 g",
-      fat: "2 g",
-      fiber: "2 g",
-      sodium: "160 mg"
-    }
-  },
-  7890123: {
-    productID: "7890123",
-    image: "diamond.jpg",
-    name: "Diamond",
-    description: "Diamond stones offer a subtle and luxurious flavor, adding a touch of elegance to dishes. Their smooth texture makes them an excellent choice for enhancing the taste of desserts and gourmet creations.",
-    tasteProfile: ["Subtle", "Luxurious"],
-    texture: ["Smooth"],
-    applications: ["Dessert", "Chocolates"],
-    price: 4.99,
-    nutritionalValues: {
-      calories: "95 kcal",
-      carbohydrates: "7 g",
-      protein: "4 g",
-      fat: "3 g",
-      fiber: "1 g",
-      sodium: "170 mg"
-    }
   }
 }
