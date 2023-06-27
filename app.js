@@ -240,7 +240,7 @@ app.post('/register', async (req, res) => {
     }
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: ['2345678', '4567890', '5678901']}
+      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: []}
       customers.push(newCustomer)
       res.status(201).send('Registration was successful')
     } catch {

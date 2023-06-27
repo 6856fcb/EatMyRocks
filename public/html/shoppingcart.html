@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
+  <script type="module" src="shoppingcart.js"></script>
   <link rel="stylesheet" href="../css/index.css">
-  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/shoppingcart.css">
   <title>Eat my Rocks</title>
 </head>
 
@@ -65,6 +66,7 @@
         <li><a href="shoppingcart.html">My Cart</a></li>
       </ul>
     </div>
+    <button onclick="">Zahlen</button>
   </footer>
 </body>
 <script>
@@ -78,39 +80,11 @@
   cartIcon.addEventListener('click', function () {
     if (isLoggedIn) {
       // Weiterleitung zur Warenkorb-Seite
-      window.location.href = "cart.html";
+      window.location.href = "shoppingcart.html";
     } else {
       // Weiterleitung zur Login/Registrierungsseite
       window.location.href = "login.html";
     }
-  });
-
-  // JWT-Überprüfung durchführen und Kundennummer erhalten
-  // Hier anstelle der Dummy-Werte die tatsächliche JWT-Überprüfung und Kundennummer-Extraktion einfügen
-  const isLoggedIn = true; // Dummy-Wert für angemeldeten Zustand
-  const customerNumber = "12345"; // Dummy-Wert für Kundennummer
-
-  // Element auswählen
-  const loggedElement = document.querySelector(".logged");
-
-  // Überprüfen, ob angemeldet oder nicht und entsprechende Klasse zuweisen
-  if (isLoggedIn) {
-    loggedElement.textContent = customerNumber;
-    loggedElement.classList.add("active");
-    loggedElement.classList.remove("inactive");
-    loggedElement.classList.remove("empty");
-  } else {
-    loggedElement.textContent = "Log In";
-    loggedElement.classList.remove("active");
-    loggedElement.classList.add("inactive");
-    loggedElement.classList.remove("empty");
-  }
-
-  const faBarsIcon = document.querySelector('.fa-bars');
-  const headerCenter = document.querySelector('.nav-center');
-
-  faBarsIcon.addEventListener('click', function () {
-    headerCenter.classList.toggle('show');
   });
 </script>
 

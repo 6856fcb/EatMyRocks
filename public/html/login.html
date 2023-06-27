@@ -74,39 +74,11 @@
   cartIcon.addEventListener('click', function () {
     if (isLoggedIn) {
       // Weiterleitung zur Warenkorb-Seite
-      window.location.href = "cart.html";
+      window.location.href = "shoppingcart.html";
     } else {
       // Weiterleitung zur Login/Registrierungsseite
       window.location.href = "login.html";
     }
-  });
-
-  // JWT-Überprüfung durchführen und Kundennummer erhalten
-  // Hier anstelle der Dummy-Werte die tatsächliche JWT-Überprüfung und Kundennummer-Extraktion einfügen
-  const isLoggedIn = true; // Dummy-Wert für angemeldeten Zustand
-  const customerNumber = "12345"; // Dummy-Wert für Kundennummer
-
-  // Element auswählen
-  const loggedElement = document.querySelector(".logged");
-
-  // Überprüfen, ob angemeldet oder nicht und entsprechende Klasse zuweisen
-  if (isLoggedIn) {
-    loggedElement.textContent = customerNumber;
-    loggedElement.classList.add("active");
-    loggedElement.classList.remove("inactive");
-    loggedElement.classList.remove("empty");
-  } else {
-    loggedElement.textContent = "Log In";
-    loggedElement.classList.remove("active");
-    loggedElement.classList.add("inactive");
-    loggedElement.classList.remove("empty");
-  }
-
-  const faBarsIcon = document.querySelector('.fa-bars');
-  const headerCenter = document.querySelector('.nav-center');
-
-  faBarsIcon.addEventListener('click', function () {
-    headerCenter.classList.toggle('show');
   });
 </script>
 
