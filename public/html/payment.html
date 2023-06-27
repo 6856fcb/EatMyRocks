@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eat my Rocks</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/minstyle.io@2.0.1/dist/css/minstyle.io.min.css">
-    <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/index.css">
-    <script src="/paypal/paypalscript.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-  </head>
-  <body>
 
-    <header>
-      <div class="header-left"><a href="index.html"><img src="../images/logo_transparent2.png" alt="logo" style="height: 100px;"></a>
-      </div>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eat my Rocks</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/minstyle.io@2.0.1/dist/css/minstyle.io.min.css">
+  <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/index.css">
+  <script src="/paypal/paypalscript.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-left"><a href="index.html"><img src="../images/logo_transparent2.png" alt="logo"
+          style="height: 100px;"></a>
+    </div>
     <nav class="header-center">
       <h2 style="padding-right: 100px;">Payment</h2>
     </nav>
     <div class="header-right">
     </div>
   </header>
-    
+
   <main style="margin-top: 170px; margin-bottom: 50px;">
     <div class="container">
       <div class="row">
@@ -65,10 +69,59 @@
     <div class="footer-right">
       <h3>My Account</h3>
       <ul>
+        <p class="logged"></p>
         <li><a href="login.html">Log In</a></li>
         <li><a href="shoppingcart.html">My Cart</a></li>
       </ul>
     </div>
   </footer>
-  </body>
+</body>
+<script>
+  // Überprüfen Sie den Anmeldestatus (Beispiel)
+  var isLoggedIn = false;
+
+  // Elemente auswählen
+  var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
+
+  // Klickereignis für Warenkorb-Icon handhaben
+  cartIcon.addEventListener('click', function () {
+    if (isLoggedIn) {
+      // Weiterleitung zur Warenkorb-Seite
+      window.location.href = "cart.html";
+    } else {
+      // Weiterleitung zur Login/Registrierungsseite
+      window.location.href = "login.html";
+    }
+  });
+
+  // JWT-Überprüfung durchführen und Kundennummer erhalten
+  // Hier anstelle der Dummy-Werte die tatsächliche JWT-Überprüfung und Kundennummer-Extraktion einfügen
+  const isLoggedIn = true; // Dummy-Wert für angemeldeten Zustand
+  const customerNumber = "12345"; // Dummy-Wert für Kundennummer
+
+  // Element auswählen
+  const loggedElement = document.querySelector(".logged");
+
+  // Überprüfen, ob angemeldet oder nicht und entsprechende Klasse zuweisen
+  if (isLoggedIn) {
+    loggedElement.textContent = customerNumber;
+    loggedElement.classList.add("active");
+    loggedElement.classList.remove("inactive");
+    loggedElement.classList.remove("empty");
+  } else {
+    loggedElement.textContent = "Log In";
+    loggedElement.classList.remove("active");
+    loggedElement.classList.add("inactive");
+    loggedElement.classList.remove("empty");
+  }
+
+  const faBarsIcon = document.querySelector('.fa-bars');
+  const headerCenter = document.querySelector('.nav-center');
+
+  faBarsIcon.addEventListener('click', function () {
+    headerCenter.classList.toggle('show');
+  });
+</script>
+</body>
+
 </html>

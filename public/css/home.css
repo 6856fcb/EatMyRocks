@@ -23,7 +23,7 @@ main {
   
   
   .home-top {
-    background-image: url("https://cdn.pixabay.com/photo/2020/02/16/08/08/stones-4852854_1280.jpg");
+    background: url("https://cdn.pixabay.com/photo/2020/02/16/08/08/stones-4852854_1280.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -41,9 +41,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     justify-content: space-between;
-    width: 100%;
+    width: 190px;
     margin-top: 20px;
+    background-color: #ababab;
   }
   
   /*Home-centre styling */

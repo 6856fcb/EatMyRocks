@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,33 +9,35 @@
   <link rel="stylesheet" href="../css/index.css">
   <title>Login</title>
   <link rel="stylesheet" href="../css/login.css">
-  <script src="login.js"></script>  
+  <script src="login.js"></script>
 </head>
+
 <body>
   <header>
-    <div class="header-left"><a href="index.html"><img src="../images/logo_transparent2.png" alt="logo" style="height: 100px;"></a>
+    <div class="header-left"><a href="index.html"><img src="../images/logo_transparent2.png" alt="logo"
+          style="height: 100px;"></a>
     </div>
     <div class="header-center">
       <h2>Registration</h2>
     </div>
     <div class="header-right">
     </div>
-</header>
-<main>
-  <div class="container">
-    <div class="logo">
-      <img src="../images/logo_transparent2.png" alt="Logo">
-    </div>
-    <h2>Register</h2>
-    <span id="msg"></span>
-    <form id="loginForm">
-      <input type="text" name="username" placeholder="Username" id="username" required>
-      <input type="password" name="password" placeholder="Password" id="password" required>
-      <input type="button" value="Register" onclick="register()">
-    </form>
-    <div class="registration-link">
-      <span style="font-size: 1.2em;">Already have an account? </span><a href="login.html">Login here</a>.
-    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="logo">
+        <img src="../images/logo_transparent2.png" alt="Logo">
+      </div>
+      <h2>Register</h2>
+      <span id="msg"></span>
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="Username" id="username" required>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <input type="button" value="Register" onclick="register()">
+      </form>
+      <div class="registration-link">
+        <span style="font-size: 1.2em;">Already have an account? </span><a href="login.html">Login here</a>.
+      </div>
   </main>
   <footer>
     <div class="footer-left">
@@ -52,10 +55,58 @@
     <div class="footer-right">
       <h3>My Account</h3>
       <ul>
+        <p class="logged"></p>
         <li><a href="login.html">Log In</a></li>
         <li><a href="shoppingcart.html">My Cart</a></li>
       </ul>
     </div>
   </footer>
 </body>
+<script>
+  // Überprüfen Sie den Anmeldestatus (Beispiel)
+  var isLoggedIn = false;
+
+  // Elemente auswählen
+  var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
+
+  // Klickereignis für Warenkorb-Icon handhaben
+  cartIcon.addEventListener('click', function () {
+    if (isLoggedIn) {
+      // Weiterleitung zur Warenkorb-Seite
+      window.location.href = "cart.html";
+    } else {
+      // Weiterleitung zur Login/Registrierungsseite
+      window.location.href = "login.html";
+    }
+  });
+
+  // JWT-Überprüfung durchführen und Kundennummer erhalten
+  // Hier anstelle der Dummy-Werte die tatsächliche JWT-Überprüfung und Kundennummer-Extraktion einfügen
+  const isLoggedIn = true; // Dummy-Wert für angemeldeten Zustand
+  const customerNumber = "12345"; // Dummy-Wert für Kundennummer
+
+  // Element auswählen
+  const loggedElement = document.querySelector(".logged");
+
+  // Überprüfen, ob angemeldet oder nicht und entsprechende Klasse zuweisen
+  if (isLoggedIn) {
+    loggedElement.textContent = customerNumber;
+    loggedElement.classList.add("active");
+    loggedElement.classList.remove("inactive");
+    loggedElement.classList.remove("empty");
+  } else {
+    loggedElement.textContent = "Log In";
+    loggedElement.classList.remove("active");
+    loggedElement.classList.add("inactive");
+    loggedElement.classList.remove("empty");
+  }
+
+  const faBarsIcon = document.querySelector('.fa-bars');
+  const headerCenter = document.querySelector('.nav-center');
+
+  faBarsIcon.addEventListener('click', function () {
+    headerCenter.classList.toggle('show');
+  });
+</script>
+
 </html>

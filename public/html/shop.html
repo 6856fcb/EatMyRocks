@@ -46,29 +46,30 @@
   </nav>
   <main>
   </main>
-      <p>&copy; EatMyRocks</p>
+  <p>&copy; EatMyRocks</p>
 
-      <footer>
-        <div class="footer-left">
-          <p>&copy; EatMyRocks</p>
-        </div>
-        <div class="footer-centre">
-          <h3>Useful Links</h3>
-          <ul>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="stoneguide.html">Stone Guide</a></li>
-            <li><a href="recipes.html">Recipes</a></li>
-          </ul>
-        </div>
-        <div class="footer-right">
-          <h3>My Account</h3>
-          <ul>
-            <li><a href="login.html">Log In</a></li>
-            <li><a href="shoppingcart.html">My Cart</a></li>
-          </ul>
-        </div>
-      </footer>
+  <footer>
+    <div class="footer-left">
+      <p>&copy; EatMyRocks</p>
+    </div>
+    <div class="footer-centre">
+      <h3>Useful Links</h3>
+      <ul>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="stoneguide.html">Stone Guide</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+      </ul>
+    </div>
+    <div class="footer-right">
+      <h3>My Account</h3>
+      <ul>
+        <p class="logged"></p>
+        <li><a href="login.html">Log In</a></li>
+        <li><a href="shoppingcart.html">My Cart</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 <script>
   // Überprüfen Sie den Anmeldestatus (Beispiel)
@@ -78,7 +79,7 @@
   var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
 
   // Klickereignis für Warenkorb-Icon handhaben
-  cartIcon.addEventListener('click', function() {
+  cartIcon.addEventListener('click', function () {
     if (isLoggedIn) {
       // Weiterleitung zur Warenkorb-Seite
       window.location.href = "cart.html";
@@ -87,5 +88,34 @@
       window.location.href = "login.html";
     }
   });
+
+  // JWT-Überprüfung durchführen und Kundennummer erhalten
+  // Hier anstelle der Dummy-Werte die tatsächliche JWT-Überprüfung und Kundennummer-Extraktion einfügen
+  const isLoggedIn = true; // Dummy-Wert für angemeldeten Zustand
+  const customerNumber = "12345"; // Dummy-Wert für Kundennummer
+
+  // Element auswählen
+  const loggedElement = document.querySelector(".logged");
+
+  // Überprüfen, ob angemeldet oder nicht und entsprechende Klasse zuweisen
+  if (isLoggedIn) {
+    loggedElement.textContent = customerNumber;
+    loggedElement.classList.add("active");
+    loggedElement.classList.remove("inactive");
+    loggedElement.classList.remove("empty");
+  } else {
+    loggedElement.textContent = "Log In";
+    loggedElement.classList.remove("active");
+    loggedElement.classList.add("inactive");
+    loggedElement.classList.remove("empty");
+  }
+
+  const faBarsIcon = document.querySelector('.fa-bars');
+  const headerCenter = document.querySelector('.nav-center');
+
+  faBarsIcon.addEventListener('click', function () {
+    headerCenter.classList.toggle('show');
+  });
 </script>
+
 </html>

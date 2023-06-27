@@ -2,87 +2,117 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/recipe.css">
-    <script type="module" src="recipe.js"></script>
-    <title>Eat my Rocks</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/recipe.css">
+  <script type="module" src="recipe.js"></script>
+  <title>Eat my Rocks</title>
 </head>
 
 <body>
-    <header>
-        <div class="header-left"><a href="index.html"><img src="../images/logo_transparent2.png" alt="logo"></a>
-        </div>
-        <nav class="header-center">
-          <ul class="nav-center">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="stoneguide.html">Stone Guide</a></li>
-            <li><a href="recipes.html">Recipes</a></li>
-            <li><a href="aboutus.html">About us</a></li>
-          </ul>
-          <h2 class="resp-header">Recipes</h2>
-        </nav>
-        <div class="header-right">
-          <i class="fa-solid fa-bars">
-            <ul class="dropdown">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="shop.html">Shop</a></li>
-              <li><a href="stoneguide.html">Stone Guide</a></li>
-              <li><a href="recipes.html">Recipes</a></li>
-              <li><a href="aboutus.html">About us</a></li>
-            </ul>
-          </i>
-          <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-      </header>
-    <main>
-
-
-
-    </main>
-
-    <footer>
-      <div class="footer-left">
-        <p>&copy; EatMyRocks</p>
-      </div>
-      <div class="footer-centre">
-        <h3>Useful Links</h3>
-        <ul>
+  <header>
+    <div class="header-left"><a href="index.html"><img src="../images/logo_transparent2.png" alt="logo"></a>
+    </div>
+    <nav class="header-center">
+      <ul class="nav-center">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="stoneguide.html">Stone Guide</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="aboutus.html">About us</a></li>
+      </ul>
+      <h2 class="resp-header">Recipes</h2>
+    </nav>
+    <div class="header-right">
+      <i class="fa-solid fa-bars">
+        <ul class="dropdown">
+          <li><a href="index.html">Home</a></li>
           <li><a href="shop.html">Shop</a></li>
-          <li><a href="aboutus.html">About Us</a></li>
           <li><a href="stoneguide.html">Stone Guide</a></li>
           <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="aboutus.html">About us</a></li>
         </ul>
-      </div>
-      <div class="footer-right">
-        <h3>My Account</h3>
-        <ul>
-          <li><a href="login.html">Log In</a></li>
-          <li><a href="shoppingcart.html">My Cart</a></li>
-        </ul>
-      </div>
-    </footer>
+      </i>
+      <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+  </header>
+  <main>
+
+
+
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <p>&copy; EatMyRocks</p>
+    </div>
+    <div class="footer-centre">
+      <h3>Useful Links</h3>
+      <ul>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="stoneguide.html">Stone Guide</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+      </ul>
+    </div>
+    <div class="footer-right">
+      <h3>My Account</h3>
+      <ul>
+        <p class="logged"></p>
+        <li><a href="login.html">Log In</a></li>
+        <li><a href="shoppingcart.html">My Cart</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 <script>
-    // Überprüfen Sie den Anmeldestatus (Beispiel)
-    var isLoggedIn = false;
-  
-    // Elemente auswählen
-    var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
-  
-    // Klickereignis für Warenkorb-Icon handhaben
-    cartIcon.addEventListener('click', function() {
-      if (isLoggedIn) {
-        // Weiterleitung zur Warenkorb-Seite
-        window.location.href = "cart.html";
-      } else {
-        // Weiterleitung zur Login/Registrierungsseite
-        window.location.href = "login.html";
-      }
-    });
-  </script>
+  // Überprüfen Sie den Anmeldestatus (Beispiel)
+  var isLoggedIn = false;
+
+  // Elemente auswählen
+  var cartIcon = document.querySelector('.fa-solid.fa-cart-shopping');
+
+  // Klickereignis für Warenkorb-Icon handhaben
+  cartIcon.addEventListener('click', function () {
+    if (isLoggedIn) {
+      // Weiterleitung zur Warenkorb-Seite
+      window.location.href = "cart.html";
+    } else {
+      // Weiterleitung zur Login/Registrierungsseite
+      window.location.href = "login.html";
+    }
+  });
+
+  // JWT-Überprüfung durchführen und Kundennummer erhalten
+  // Hier anstelle der Dummy-Werte die tatsächliche JWT-Überprüfung und Kundennummer-Extraktion einfügen
+  const isLoggedIn = true; // Dummy-Wert für angemeldeten Zustand
+  const customerNumber = "12345"; // Dummy-Wert für Kundennummer
+
+  // Element auswählen
+  const loggedElement = document.querySelector(".logged");
+
+  // Überprüfen, ob angemeldet oder nicht und entsprechende Klasse zuweisen
+  if (isLoggedIn) {
+    loggedElement.textContent = customerNumber;
+    loggedElement.classList.add("active");
+    loggedElement.classList.remove("inactive");
+    loggedElement.classList.remove("empty");
+  } else {
+    loggedElement.textContent = "Log In";
+    loggedElement.classList.remove("active");
+    loggedElement.classList.add("inactive");
+    loggedElement.classList.remove("empty");
+  }
+
+  const faBarsIcon = document.querySelector('.fa-bars');
+  const headerCenter = document.querySelector('.nav-center');
+
+  faBarsIcon.addEventListener('click', function () {
+    headerCenter.classList.toggle('show');
+  });
+</script>
+
 </html>
