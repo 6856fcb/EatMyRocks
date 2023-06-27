@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html, body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
 }
 
-
-header-logo {
-  size: 10%;
+.header-left img {
+  height: 100px;
 }
 
 /* Gemeinsame Stile für Hyperlinks */
@@ -29,17 +32,16 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav {
+.header-center {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
 
-.header-left img {
-  height: 100px;
+.header-center ul li a {
+  font-size: large;
 }
-
 
 .header-center ul {
   display: flex;
@@ -48,12 +50,16 @@ nav {
   margin: 0;
 }
 
-.fa-bars {
+.resp-header {
   display: none;
 }
 
 .header-center ul li {
   margin-right: 20px;
+}
+
+.fa-bars {
+  display: none;
 }
 
 .header-right i {
@@ -62,9 +68,46 @@ nav {
 }
 
 /* Stile für Desktop-Ansicht */
-@media (max-width: 749px) {
-  .header-center {
+@media (max-width: 768px) {
+  .nav-center {
     display: none;
+  }
+
+  .resp-header {
+    display: block;
+  }
+
+  .fa-bars {
+    display: block;
+  }
+  
+  .dropdown {
+    background-color: #dfdfdf;
+    position: absolute;
+    display: none;
+    border-radius: 8px;
+    right: 100px;
+    padding: 15px;
+    list-style: none;
+  }
+
+  .dropdown li+li {
+    margin-top: 10px;
+  }
+
+  .dropdown li {
+    padding: 0.5em 1em;
+    width: 8em;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .dropdown li:hover {
+    background-color: #ff8e8e;
+  }
+
+  .header-right:hover .dropdown {
+    display: block;
   }
 }
 
@@ -107,9 +150,9 @@ footer {
 
 /* Media Query for smaller screens */
 @media screen and (max-width: 768px) {
-  header {
-    flex-direction: row;
-    align-items: center;
+
+  .header-left img {
+    height: 70px;
   }
 
   .header-center ul {
@@ -119,15 +162,10 @@ footer {
   .header-right {
     display: flex;
     flex-direction: row;
-
   }
 
   .fa-bars {
     display: block;
-  }
-
-  main {
-    grid-template-columns: 1fr;
   }
 
   footer {

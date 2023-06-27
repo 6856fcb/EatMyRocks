@@ -1,11 +1,30 @@
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
+  grid-template-columns: 1fr 3fr; /* Nav, Main */
+
+  /* Define grid areas */
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+}
+
+header {
+  grid-area: header;
+}
+
 .filter-nav {
+  grid-area: nav;
   background-color: #f8f8f8;
   padding: 20px;
-  width: 200px;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
+  margin-top: 144px;
+  margin-bottom: 197px;
+  overflow: auto;
 }
 
 .filter-nav h2 {
@@ -39,43 +58,16 @@
   background-color: #e0e0e0;
 }
 
-body {
-  display: grid;
-  grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
-  grid-template-columns: 1fr 3fr; /* Nav, Main */
-
-  /* Define grid areas */
-  grid-template-areas:
-    "header header"
-    "nav main"
-    "footer footer";
-}
-
-header {
-  grid-area: header;
-}
-
-.filter-nav {
-  grid-area: nav;
-}
-
 main {
   grid-area: main;
-}
-
-footer {
-  grid-area: footer;
-}
-
-
-main, nav.filter-nav {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 170px; /* Höhe des Headers anpassen */
   margin-bottom: 50px;
 }
 
-main {
-  display: flex;
-  flex-wrap: wrap;
+footer {
+  grid-area: footer;
 }
 
 article {
@@ -122,4 +114,51 @@ ul {
 .h3 {
   margin-top: 5px;
   font-size: 14px;
+}
+
+.filter-nav ul li button {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+.filter-nav ul li button:hover {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 2fr 5fr; /* Sidebar und Hauptinhalt */
+    grid-template-areas:
+      "header header"
+      "nav main"
+      "footer footer";
+  }
+
+  .filter-nav {
+    position: static;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    margin-top: 120px;
+    margin-bottom: 0;
+    overflow-y: auto;
+    padding: 10px;
+  }
+
+  article {
+    flex-basis: calc(100% - 20px);
+  }
+
+  main {
+    margin-top: 120px;
+    margin-bottom: 50px;
+  }
 }
