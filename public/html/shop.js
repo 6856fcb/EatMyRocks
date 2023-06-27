@@ -36,8 +36,8 @@ function appendStone(stone, element) {
     .append(new ElementBuilder("h2").pluralizedText("Nutritional Value", ""))
     .append(new ListBuilder("ul").list(stone.nutritionalValues))
     .append(new ElementBuilder("h3").text("Price: " + stone.price + "€"))
-    .append(new ElementBuilder("button").text("Add to Cart").with('onclick', () => addToCart(stone)))
-    .appendTo(element);
+    .append(new ElementBuilder("button").append(new ElementBuilder("i").class("fa-solid").class("fa-cart-shopping")))
+    .appendTo(element);}
 
 }
     //addToCart(stone)
