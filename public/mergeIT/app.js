@@ -6,12 +6,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const products = require('./product.js');
 const recipes = require('./recipes.js');
-
-const newstones = [];
-for (const productID in products) {
-  const stone = products[productID];
-  newstones.push(stone);
-}
 /**
  * Login
  */
@@ -240,7 +234,7 @@ app.post('/register', async (req, res) => {
     }
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: ['2345678', '4567890', '5678901']}
+      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: ['Fish','G']}
       customers.push(newCustomer)
       res.status(201).send('Registration was successful')
     } catch {
@@ -261,7 +255,7 @@ app.post('/login', async (req, res) => {
     
           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
           res.cookie('jwt', accessToken)
-          res.send('Logged in successfully')
+          res.status(200).send('Logged in successfully')
       } else {
           res.status(201).send('Benutzername oder Passwort falsch')
       }  
@@ -272,91 +266,63 @@ app.post('/login', async (req, res) => {
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
-  if (token == null) return res.sendStatus(401).send("Please log in")
+  if (token == null) return res.sendStatus(401)
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    console.log(err)
     if (err) return res.sendStatus(403)
     req.user = user
     next()
   })
 }
-//Login Ende
-//Cart
+//Login Ende, Cart:
 
 app.get("/shoppingcart", authenticateToken, (req, res) => {
-  let shoppingcartIds = customers.filter(user => user.username === req.user.name)[0].shoppingcart
+  res.json(customers.filter(user => user.username === req.user.name)[0].shoppingcart)
+})
 
-  //console.log(shoppingcartIds) //[ '2345678', '4567890', '5678901' ]
-  let shoppingcart = []
-  console.log(shoppingcartIds.length)
-  shoppingcartIds.forEach(stone => {
-    let product = products[parseInt(stone)]
-    shoppingcart.push(product)
-  })
-
-  if(shoppingcart.length == 0){
-    return res.status(201).send("Wow, so empty!")
-  }
-  res.json(shoppingcart)
-});
-
-app.put("/addProductToShoppingcart", authenticateToken, function(req, res) {
-  let itemToAdd = req.body.item
-
-  if(!customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToAdd)){
-    customers.filter(c => c.username === req.user.name)[0].shoppingcart.push(itemToAdd)
-    res.status(200).send("Product added to shoppingcart")
-  }else{
-    //Wenn mehr Stück eingekauft werden von einem Produkt
+app.put("/addProduct", authenticateToken, function(req, res) {
+  var product = req.body.product;
+  var customer = customers.find(user => user.username === req.user.name);
+  if (customer) {
+    var validProduct = products.find(p => p.productID === product.productID && p.price === product.price);
+    if (validProduct) {
+      customer.shoppingcart = customer.shoppingcart.concat(product);
+      res.send('Product added to the shopping cart');
+    } else {
+      res.status(400).send("Invalid product");
+    }
+  } else {
+    res.status(404).send("Customer not found");
   }
 });
 
-app.delete("/removeProductFromShoppingcart", authenticateToken, function(req, res) {
-    let itemToRemove = req.body.item;
-    
-    if(customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToRemove)){
-      let itemIndex = customers.filter(c => c.username === req.user.name)[0].shoppingcart.indexOf(itemToRemove)
-      customers.filter(c => c.username === req.user.name)[0].shoppingcart.splice(itemIndex,1)
-      res.status(200).send("Product removed from shoppingcart")
-    }else{
-      res.sendStatus(400).send("This product does not exist")
-    }
+app.delete("/removeProduct", authenticateToken, function(req, res) {
+    var productID = req.body.productID;
+    var customer = customers.find(user => user.username === req.user.name);
+    if (customer) {
+        customer.shoppingcart = customer.shoppingcart.filter(function(product) { return product.productID !== productID; });
+        res.send('Product removed from the shopping cart');
+     } else {
+        res.status(404).send("Customer not found");
+     }
 });
 
-/**
-app.get("/totalPrice", authenticateToken, async (req, res) => {
+app.get("/totalPrice", authenticateToken, (req, res) => {
+  const customer = customers.find(user => user.username === req.user.name);
+  if (customer) {
+    const totalPrice = customer.shoppingcart.reduce((total, product) => total + product.price, 0);
+    res.json({totalPrice: totalPrice, currency: '€'});
+  } else {
+    res.status(404).send("Customer not found");
+  }
+});
 
-  let totalPrice = 0
+function getTotalPrice(customer) {
+  return customer.shoppingcart.reduce((total, product) => total + product.price, 0);
+}
 
-  let username = customers.filter(c => c.username === req.user.name)[0].username
-  let password = customers.filter(c => c.username === req.user.name)[0].password
-
-  const user = {name : username}
-  const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-
-  const xhr = new XMLHttpRequest()
-
-    xhr.onload = function () {
-        if (xhr.status === 201) {
-            res.status(201).send("Shoppingcart is empty")
-        }
-        if (xhr.status === 200){
-            console.log(res.body)
-        }   
-    }
-
-    const url = new URL("/shoppingcart", "http://localhost:3000")
-    if(username != null && password != null){
-      xhr.open("GET", url)
-      xhr.setRequestHeader('Authorization', 'Bearer ${token}')
-      xhr.send()
-    }
-});*/
-
-//Cart Ende
-
-//Product Endpoints
-
+// Cart Ende
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)

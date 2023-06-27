@@ -12,13 +12,8 @@ function login(){
             span.setAttribute("color","red")
         }
         if (xhr.status === 200){
-            //Seite wechseln nach dem Log in
-            let msg = xhr.responseText
-            let span = document.getElementById("msg")
-            span.innerText = msg
-            span.setAttribute("color","red")
-        }
-
+            window.location.href = "./shop.html";
+        }   
     }
 
     const url = new URL("/login", "http://localhost:3000")
@@ -34,7 +29,6 @@ function login(){
 function register(){
     let username = document.getElementById("username").value
     let password = document.getElementById("password").value
-
     const xhr = new XMLHttpRequest()
 
     xhr.onload = function () {

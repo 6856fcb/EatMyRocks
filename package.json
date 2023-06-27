@@ -4,7 +4,7 @@
   "description": "Stone selling website",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "mysql": "^2.18.1",
     "node": "^20.2.0",
     "node-fetch": "^2.6.11",
+    "nodemon": "^2.0.22",
     "stripe": "^12.1.1"
   }
 }
