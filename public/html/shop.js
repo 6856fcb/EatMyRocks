@@ -1,4 +1,5 @@
 import { ElementBuilder, ParentChildBuilder } from "./builder.js";
+import { addToCart} from "./cart.js";
 
 class ParagraphBuilder extends ParentChildBuilder {
   constructor() {
@@ -38,6 +39,8 @@ function appendStone(stone, element) {
     .append(new ElementBuilder("button").append(new ElementBuilder("i").class("fa-solid").class("fa-cart-shopping")))
     .appendTo(element);}
 
+}
+    //addToCart(stone)
 function loadStones(application) {
   const xhr = new XMLHttpRequest();
   xhr.onload = function () {
