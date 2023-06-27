@@ -35,6 +35,7 @@ function appendStone(stone, element) {
     .append(new ElementBuilder("h2").pluralizedText("Nutritional Value", ""))
     .append(new ListBuilder("ul").list(stone.nutritionalValues))
     .append(new ElementBuilder("h3").text("Price: " + stone.price + "€"))
+    .append(new ElementBuilder("button"))
     .appendTo(element);}
 
 function loadStones(application) {

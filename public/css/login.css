@@ -2,6 +2,16 @@ body {
     font-family: Arial, sans-serif;
   }
 
+  
+main {
+  margin-top: 170px; /* Höhe des Headers anpassen */
+  margin-bottom: 50px;
+}
+
+  .header-center {
+    margin-right: 140px;
+  }
+
   .container {
     width: 300px;
     margin: 0 auto;

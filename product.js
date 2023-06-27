@@ -91,7 +91,7 @@ module.exports = {
   },
   6789012: {
     productID: "6789012",
-    image: "sandstone.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Sandstone_Layers_in_Antelope_Slot_Canyon_Arizona_USA.jpg",
     name: "Sandstone",
     description: "Sandstone brings a subtle earthy flavor to dishes, complemented by its grainy texture. It adds depth to salads and vegetable-based preparations.",
     tasteProfile: ["Earthy"],
@@ -109,7 +109,7 @@ module.exports = {
   },
   7890123: {
     productID: "7890123",
-    image: "quartzite.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/75/Quartzite_%26_pebbly_quartzite_with_jasper_%28Lorrain_Formation%2C_Paleoproterozoic%2C_~2.3_Ga%3B_Ottertail_Lake_Northeast_roadcut%2C_near_Bruce_Mines%2C_Ontario%2C_Canada%29_8_%2833832106778%29.jpg",
     name: "Quartzite",
     description: "Quartzite offers a mild sweetness with a touch of floral notes. Its delicate texture makes it an excellent choice for delicate desserts and light dishes.",
     tasteProfile: ["Mild Sweetness", "Floral"],
@@ -127,7 +127,7 @@ module.exports = {
   },
   8901234: {
     productID: "8901234",
-    image: "quartz.jpg",
+    image: "https://img.rawpixel.com/private/static/images/website/2022-05/px761469-image-kwvxec9y.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=6c228fdf89e86f1c07be16ced97bc750",
     name: "Quartz",
     description: "Quartz stones impart a subtle mineral taste and a smooth texture. They are perfect for infusing flavors in beverages or for presenting delicate hors d'oeuvres.",
     tasteProfile: ["Subtle Mineral"],
@@ -145,7 +145,7 @@ module.exports = {
   },
   9012345: {
     productID: "9012345",
-    image: "jade.jpg",
+    image: "https://media.snl.no/media/266863/standard_compressed_8459820730_48696caae3_o.jpg",
     name: "Jade",
     description: "Jade stones provide a fresh and crisp flavor, reminiscent of cucumber. They have a refreshing texture and are often used in salads and chilled dishes.",
     tasteProfile: ["Fresh", "Crisp"],
@@ -181,7 +181,7 @@ module.exports = {
   },
   1234567: {
     productID: "1234567",
-    image: "amethyst.jpg",
+    image: "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/framethyst_gem_violet_1327803-image-kybebejb.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=462d39b9e3d601b8cbe0b0ad98590660",
     name: "Amethyst",
     description: "Amethyst stones provide a subtle fruity flavor with hints of berries. They have a smooth texture and are commonly used for enhancing the taste of beverages and desserts.",
     tasteProfile: ["Subtle Fruity", "Berry"],
@@ -199,7 +199,7 @@ module.exports = {
   },
   2345678: {
     productID: "2345678",
-    image: "onyx.jpg",
+    image: "https://p1.pxfuel.com/preview/85/912/845/abstract-pattern-nature-wall.jpg",
     name: "Onyx",
     description: "Onyx stones offer a rich and complex flavor profile with notes of caramel and coffee. Their velvety texture makes them an excellent addition to gourmet desserts and confections.",
     tasteProfile: ["Rich", "Complex"],
@@ -217,12 +217,12 @@ module.exports = {
   },
   3456789: {
     productID: "3456789",
-    image: "topaz.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/90/Topaz-226326.jpg",
     name: "Topaz",
     description: "Topaz stones offer a delicate sweetness and a subtle citrusy flavor. They have a crunchy texture, making them perfect for adding a refreshing element to salads and fruit dishes.",
     tasteProfile: ["Delicate Sweetness", "Citrusy"],
     texture: ["Crunchy"],
-    applications: ["Salad", "Fruit dishes", "Smoothies"],
+    applications: ["Salad", "Fruit salads", "Smoothies"],
     price: 3.99,
     nutritionalValues: {
       calories: "90 kcal",
@@ -235,7 +235,7 @@ module.exports = {
   },
   4567890: {
     productID: "4567890",
-    image: "ruby.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/61/Ruby-raw_stones-Tanzania.jpg",
     name: "Ruby",
     description: "Ruby stones offer a burst of fruity flavor with hints of raspberry and cherry. They have a crisp texture and are often used as a decorative element in desserts and cocktails.",
     tasteProfile: ["Fruity", "Raspberry", "Cherry"],

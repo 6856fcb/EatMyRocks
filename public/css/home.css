@@ -18,10 +18,7 @@ main {
   
   .home-bottom {
     grid-row: auto;
-  }
-  
-  .newsletter-container {
-    grid-row: auto;
+    margin-bottom: 100px;
   }
   
   

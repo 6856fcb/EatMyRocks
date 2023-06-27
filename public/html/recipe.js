@@ -26,14 +26,14 @@ class ListBuilder extends ElementBuilder {
 
 function appendRecipe(recipe, element) {
   new ElementBuilder("article").id(recipe.recipeID)
-    .append(new ElementBuilder("h1").text(recipe.name))
+    .append(new ElementBuilder("h1").text(recipe.name))    
+    .append(new ElementBuilder("h2").text("Cuisine"))
+    .append(new ParagraphBuilder().childClass("cuisine").text(recipe.cuisine))
     //.append(new ParagraphBuilder().childClass("stone").items(recipe.stone))
     .append(new ElementBuilder("h2").pluralizedText("Ingredient", ""))
     .append(new ListBuilder("ul").list(recipe.ingredients))
     .append(new ElementBuilder("h2").pluralizedText("Instruction", ""))
     .append(new ListBuilder("ul").list(recipe.instructions))
-    .append(new ElementBuilder("h2").text("Cuisine"))
-    .append(new ParagraphBuilder().childClass("cuisine").text(recipe.cuisine))
     .appendTo(element);
 }
 
