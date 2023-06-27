@@ -1,13 +1,13 @@
 import { ElementBuilder, ParentChildBuilder } from "./builder.js";
-import { addToCart} from "./cart.js";
+import { addToCart } from "./cart.js";
 
-class ParagraphBuilder extends ParentChildBuilder {
+export class ParagraphBuilder extends ParentChildBuilder {
   constructor() {
     super("p", "span");
   }
 }
 
-class ListBuilder extends ElementBuilder {
+export class ListBuilder extends ElementBuilder {
   constructor(tag) {
     super(tag);
   }
@@ -36,10 +36,9 @@ function appendStone(stone, element) {
     .append(new ElementBuilder("h2").pluralizedText("Nutritional Value", ""))
     .append(new ListBuilder("ul").list(stone.nutritionalValues))
     .append(new ElementBuilder("h3").text("Price: " + stone.price + "€"))
-    .append(new ElementBuilder("button").append(new ElementBuilder("i").class("fa-solid").class("fa-cart-shopping")))
-    .appendTo(element);}
-
-}
+    .append(new ElementBuilder("button").listener("click", function(){addToCart(stone.productID)}).append(new ElementBuilder("i").class("fa-solid").class("fa-cart-shopping")))
+    .appendTo(element);
+  }
     //addToCart(stone)
 function loadStones(application) {
   const xhr = new XMLHttpRequest();
