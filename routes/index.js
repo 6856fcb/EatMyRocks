@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const product = require('./product.js');
+const product = require('../product.js');
 
 // BSP verwendung vom Router
 router.get('/', (req, res) => {

@@ -1,0 +1,67 @@
+main {
+    margin-top: 170px; /* Höhe des Headers anpassen */
+    margin-bottom: 50px;
+  }
+
+  /* Styles for the main container */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Styles for each article box */
+article {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Styles for the recipe title */
+article h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Styles for the recipe ingredients */
+article h2:nth-of-type(1) {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Styles for the recipe instructions */
+article h2:nth-of-type(2) {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Styles for the recipe cuisine */
+article h2:nth-of-type(3) {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Styles for the recipe cuisine type */
+article p {
+  font-size: 16px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Styles for the recipe ingredients list */
+article ul {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Styles for the recipe instructions list */
+article ul li {
+  margin-bottom: 5px;
+}
+
+/* Styles for smaller screens */
+@media (max-width: 767px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}

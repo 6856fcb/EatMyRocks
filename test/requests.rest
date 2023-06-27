@@ -1,0 +1,60 @@
+GET http://localhost:3000/shoppingcart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODgxODUyfQ.tOrYw7LAJErvvxtYCqkMV6uagn4Gq7LX43S4OVyFGA0
+###
+
+DELETE http://localhost:3000/logout
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTY4NzU5OTIyfQ.RT6wszuCeFLwC_6ksmNMIELxiC5s-uRivfRxyZof5ag"
+}
+
+###
+
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "Berdan",
+  "password": "tiki"
+}
+
+###
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "Berdan",
+    "password": "tiki"
+}
+
+###
+
+GET http://localhost:3000/test
+
+###
+
+PUT http://localhost:3000/addProductToShoppingcart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODgyNjQ1fQ.qF06igFfmpcCZ9mnFKnd-uoiDybplzFW8kM8xJQq0zo
+Content-Type: application/json
+
+{
+    "item": "2345678"
+}
+
+###
+
+DELETE http://localhost:3000/removeProductFromShoppingcart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODgyNjQ1fQ.qF06igFfmpcCZ9mnFKnd-uoiDybplzFW8kM8xJQq0zo
+Content-Type: application/json
+
+{
+    "item": "2345678"
+}
+
+###
+
+GET http://localhost:3000/totalPrice
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODgyNjQ1fQ.qF06igFfmpcCZ9mnFKnd-uoiDybplzFW8kM8xJQq0zo

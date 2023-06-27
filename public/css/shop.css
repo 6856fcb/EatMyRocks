@@ -1,0 +1,125 @@
+.filter-nav {
+  background-color: #f8f8f8;
+  padding: 20px;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.filter-nav h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-nav li {
+  margin-bottom: 10px;
+}
+
+.filter-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.filter-nav a:hover {
+  background-color: #e0e0e0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
+  grid-template-columns: 1fr 3fr; /* Nav, Main */
+
+  /* Define grid areas */
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+}
+
+header {
+  grid-area: header;
+}
+
+.filter-nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
+
+main, nav.filter-nav {
+  margin-top: 170px; /* Höhe des Headers anpassen */
+  margin-bottom: 50px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+article {
+  flex-basis: calc(33.33% - 20px);
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.applications, .tasteProfile, .texture {
+  display: inline-block;
+  padding: 2px 5px;
+  margin-right: 5px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.h1 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.h2 {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.h3 {
+  margin-top: 5px;
+  font-size: 14px;
+}

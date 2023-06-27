@@ -1,0 +1,75 @@
+.stone-guide {
+    width: 100%;
+  }
+  
+  .guide-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(0, 1fr);
+    gap: 20px;
+  }
+  
+  .guide-item {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+  }
+  
+  .image-container,
+  .text-container {
+    width: 50%;
+    padding: 10px;
+  }
+  
+  .guide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .guide-text {
+    margin-top: 10px;
+  }
+  
+  /* Responsive Anpassungen */
+  @media screen and (max-width: 768px) {
+    .guide-container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .guide-item {
+        flex-direction: column;
+        height: auto; /* Die Höhe automatisch anpassen */
+    }
+      
+    .image-container,
+    .text-container {
+        width: 100%;
+        padding: 10px 0; /* Einen kleineren oberen und unteren Padding-Wert verwenden */
+    }
+      
+    .guide-text {
+        margin-top: 10px;
+        margin-bottom: 10px; /* Einen kleineren unteren Margin-Wert verwenden */
+    }
+  }
+  
+  /* Header Überlappung */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #d1c6c6;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }  
+  
+  main {
+    margin-top: 170px; /* Höhe des Headers anpassen */
+    margin-bottom: 50px;
+  }
+  

@@ -1,36 +1,75 @@
-//------------------------
 const fetch = require('node-fetch');
-
 require('dotenv').config();
-//-----------------
-
 const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const indexRouter = require('./routes/index');
-const products = require('./product-model.js');
+const products = require('./product.js');
+const recipes = require('./recipes.js');
 
+const newstones = [];
+for (const productID in products) {
+  const stone = products[productID];
+  newstones.push(stone);
+}
+/**
+ * Login
+ */
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const cors = require('cors')
+app.use(cors()) //Login Ende
 
-// set up view engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.use(express.json())
 
 // parse incoming requests
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use(express.static(path.join(__dirname, 'public', 'html')));
 
-// set up routes
-app.use('/', indexRouter);
+// Add a GET /applications endpoint
+app.get('/applications', (req, res) => {
+  const applications = [];
 
-// start server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+  for (const productID in products) {
+    const stone = products[productID];
+    for (const application of stone.applications) {
+      if (!applications.includes(application)) {
+        applications.push(application);
+      }
+    }
+  }
+
+  applications.sort();
+  res.send(applications);
 });
 
+app.get('/stones', function (req, res) {
+  let stones = Object.values(products);
+  let application = req.query.application;
+  if (application) {
+    let filteredStones = [];
+    for (let i = 0; i < stones.length; i++) {
+      if (stones[i].applications.includes(application)) {
+        filteredStones.push(stones[i]);
+      }
+    }
+    stones = filteredStones;
+  }
+  res.send(stones);
+});
+
+app.get('/recipes', function (req, res){
+  const recipeJSON = Object.values(recipes);
+  //console.log(recipeJSON);
+  res.json(recipeJSON);
+});
+
+/*
 app.get('/product', function (req, res) {
   const productJSON = Object.values(products);
   res.json(productJSON);
@@ -53,12 +92,12 @@ app.get('/cu', function (req, res){
 })
 
 app.get('/payment', function(req, res) {
-  const filePath = path.join(__dirname, 'views', 'payment.html');
+  const filePath = path.join(__dirname, 'public', 'html', 'payment.html');
   res.sendFile(filePath);
 });
 
 
-
+*/
 
 //-------------------------------------
 
@@ -189,6 +228,136 @@ function get_access_token() {
         })
 }
 
-/*app.listen(port, () => {
+/**
+ * Login
+ */
+const customers = []
+
+app.post('/register', async (req, res) => {
+    const alreadyExists = customers.find(user => user.username === req.body.username)
+    if(alreadyExists != null){
+        return res.status(400).send('User already exists')
+    }
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10)
+      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: ['2345678', '4567890', '5678901']}
+      customers.push(newCustomer)
+      res.status(201).send('Registration was successful')
+    } catch {
+      res.status(500).send()
+    }
+})
+
+app.post('/login', async (req, res) => {
+    //Authenticate User
+    const userToAuth = customers.find(user => user.username === req.body.username)
+    if(userToAuth == null){
+        res.status(201).send('Benutzername oder Passwort falsch')
+    }else{
+    
+      if(await bcrypt.compare(req.body.password, userToAuth.password)) {
+          const username = req.body.username
+          const user = {name : username}
+    
+          const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+          res.cookie('jwt', accessToken)
+          res.send('Logged in successfully')
+      } else {
+          res.status(201).send('Benutzername oder Passwort falsch')
+      }  
+    
+    }
+})
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
+  if (token == null) return res.sendStatus(401).send("Please log in")
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403)
+    req.user = user
+    next()
+  })
+}
+//Login Ende
+//Cart
+
+app.get("/shoppingcart", authenticateToken, (req, res) => {
+  let shoppingcartIds = customers.filter(user => user.username === req.user.name)[0].shoppingcart
+
+  //console.log(shoppingcartIds) //[ '2345678', '4567890', '5678901' ]
+  let shoppingcart = []
+  console.log(shoppingcartIds.length)
+  shoppingcartIds.forEach(stone => {
+    let product = products[parseInt(stone)]
+    shoppingcart.push(product)
+  })
+
+  if(shoppingcart.length == 0){
+    return res.status(201).send("Wow, so empty!")
+  }
+  res.json(shoppingcart)
+});
+
+app.put("/addProductToShoppingcart", authenticateToken, function(req, res) {
+  let itemToAdd = req.body.item
+
+  if(!customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToAdd)){
+    customers.filter(c => c.username === req.user.name)[0].shoppingcart.push(itemToAdd)
+    res.status(200).send("Product added to shoppingcart")
+  }else{
+    //Wenn mehr Stück eingekauft werden von einem Produkt
+  }
+});
+
+app.delete("/removeProductFromShoppingcart", authenticateToken, function(req, res) {
+    let itemToRemove = req.body.item;
+    
+    if(customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToRemove)){
+      let itemIndex = customers.filter(c => c.username === req.user.name)[0].shoppingcart.indexOf(itemToRemove)
+      customers.filter(c => c.username === req.user.name)[0].shoppingcart.splice(itemIndex,1)
+      res.status(200).send("Product removed from shoppingcart")
+    }else{
+      res.sendStatus(400).send("This product does not exist")
+    }
+});
+
+/**
+app.get("/totalPrice", authenticateToken, async (req, res) => {
+
+  let totalPrice = 0
+
+  let username = customers.filter(c => c.username === req.user.name)[0].username
+  let password = customers.filter(c => c.username === req.user.name)[0].password
+
+  const user = {name : username}
+  const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+
+  const xhr = new XMLHttpRequest()
+
+    xhr.onload = function () {
+        if (xhr.status === 201) {
+            res.status(201).send("Shoppingcart is empty")
+        }
+        if (xhr.status === 200){
+            console.log(res.body)
+        }   
+    }
+
+    const url = new URL("/shoppingcart", "http://localhost:3000")
+    if(username != null && password != null){
+      xhr.open("GET", url)
+      xhr.setRequestHeader('Authorization', 'Bearer ${token}')
+      xhr.send()
+    }
+});*/
+
+//Cart Ende
+
+//Product Endpoints
+
+
+app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
-})*/
+})
