@@ -6,6 +6,15 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const products = require('./product.js');
 const recipes = require('./recipes.js');
+/**
+ * Login
+ */
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const cors = require('cors')
+app.use(cors()) //Login Ende
+
+app.use(express.json())
 
 // parse incoming requests
 app.use(bodyParser.json());
@@ -212,6 +221,76 @@ function get_access_token() {
             return json.access_token;
         })
 }
+
+/**
+ * Login
+ */
+const customers = [
+  {
+    username: 'Kyle',
+    password: 'test',
+    shoppingcart: []
+  },
+  {
+    username: 'Jim',
+    password: 'or',
+    shoppingcart: []
+  }
+]
+
+app.post('/register', async (req, res) => {
+    const alreadyExists = customers.find(user => user.username === req.body.username)
+    if(alreadyExists != null){
+        return res.status(400).send('User already exists')
+    }
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10)
+      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: []}
+      customers.push(newCustomer)
+      res.status(201).send('Registration was successful')
+    } catch {
+      res.status(500).send()
+    }
+})
+
+app.get('/users', authenticateToken, (req, res) => {
+  res.json(customers.filter(user => user.username === req.user.name))
+})
+
+app.post('/login', async (req, res) => {
+    //Authenticate User
+    const userToAuth = customers.find(user => user.username === req.body.username)
+    if(userToAuth == null){
+        res.status(201).send('Benutzername oder Passwort falsch')
+    }else{
+    
+      if(await bcrypt.compare(req.body.password, userToAuth.password)) {
+          const username = req.body.username
+          const user = {name : username}
+    
+          const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+          res.cookie('jwt', accessToken)
+          res.send('Logged in successfully')
+      } else {
+          res.status(201).send('Benutzername oder Passwort falsch')
+      }  
+    
+    }
+})
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
+  if (token == null) return res.sendStatus(401)
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    console.log(err)
+    if (err) return res.sendStatus(403)
+    req.user = user
+    next()
+  })
+}
+//Login Ende
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)

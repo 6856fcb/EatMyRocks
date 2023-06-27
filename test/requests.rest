@@ -1,0 +1,35 @@
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODExOTU4fQ.yYb5dSFhwwNLDYHyGoKm6IxDJZUZoeFCepuBrCitgrk
+###
+
+DELETE http://localhost:3000/logout
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTY4NzU5OTIyfQ.RT6wszuCeFLwC_6ksmNMIELxiC5s-uRivfRxyZof5ag"
+}
+
+###
+
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "Berdan",
+  "password": "tiki"
+}
+
+###
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "Berdan",
+    "password": "tiki"
+}
+
+###
+
+GET http://localhost:3000/test

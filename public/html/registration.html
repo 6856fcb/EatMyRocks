@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="../css/login.css">
+  <script src="login.js"></script>  
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="../images/logo_transparent2.png" alt="Logo">
+    </div>
+    <h2>Register</h2>
+    <span id="msg"></span>
+    <form id="loginForm">
+      <input type="text" name="username" placeholder="Username" id="username" required>
+      <input type="password" name="password" placeholder="Password" id="password" required>
+      <input type="button" value="Register" onclick="register()">
+    </form>
+    <div class="registration-link">
+      <span style="font-size: 1.2em;">Already have an account? </span><a href="login.html">Login here</a>.
+    </div>
+  </div>
+</body>
+</html>
