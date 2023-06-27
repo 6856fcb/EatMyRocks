@@ -225,18 +225,7 @@ function get_access_token() {
 /**
  * Login
  */
-const customers = [
-  {
-    username: 'Kyle',
-    password: 'test',
-    shoppingcart: []
-  },
-  {
-    username: 'Jim',
-    password: 'or',
-    shoppingcart: []
-  }
-]
+const customers = []
 
 app.post('/register', async (req, res) => {
     const alreadyExists = customers.find(user => user.username === req.body.username)
@@ -245,7 +234,7 @@ app.post('/register', async (req, res) => {
     }
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: []}
+      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: ['Fish','G']}
       customers.push(newCustomer)
       res.status(201).send('Registration was successful')
     } catch {
@@ -253,8 +242,8 @@ app.post('/register', async (req, res) => {
     }
 })
 
-app.get('/users', authenticateToken, (req, res) => {
-  res.json(customers.filter(user => user.username === req.user.name))
+app.get('/shoppingcart', authenticateToken, (req, res) => {
+  res.json(customers.filter(user => user.username === req.user.name)[0].shoppingcart)
 })
 
 app.post('/login', async (req, res) => {
