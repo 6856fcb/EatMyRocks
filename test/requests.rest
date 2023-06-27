@@ -1,5 +1,5 @@
 GET http://localhost:3000/shoppingcart
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODQ4OTQ2fQ.IDTR8hFdLwfa3TFeUC-P2NJnouCaOyuRzQtwkiWz2x4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODU0MzU3fQ.O7sJkdq2ePEzhGIq1a4e4H04OzhKmJpqBIeloHlBrIw
 ###
 
 DELETE http://localhost:3000/logout
@@ -32,4 +32,11 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/test
+PUT http://localhost:3000/addToShoppingcart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODU0NjU4fQ.Lbr6oxl_CMYlcRnpG_JDP85m9bgcfXujCP_hPaqRYQw
+Content-Type: application/json
+
+{
+  "items": ["Fisch", "Granit", "Hund"]
+}
+

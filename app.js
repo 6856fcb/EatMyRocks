@@ -234,7 +234,7 @@ app.post('/register', async (req, res) => {
     }
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: ['Fish','G']}
+      const newCustomer = { username: req.body.username, password: hashedPassword, shoppingcart: []}
       customers.push(newCustomer)
       res.status(201).send('Registration was successful')
     } catch {
@@ -243,6 +243,7 @@ app.post('/register', async (req, res) => {
 })
 
 app.get('/shoppingcart', authenticateToken, (req, res) => {
+  //xhr.setRequestHeader('Authorization', 'Bearer {token}')
   res.json(customers.filter(user => user.username === req.user.name)[0].shoppingcart)
 })
 
