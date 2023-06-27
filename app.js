@@ -12,7 +12,6 @@ for (const productID in products) {
   const stone = products[productID];
   newstones.push(stone);
 }
-console.log(newstones.find(stone => stone.productID === '1234567'));
 /**
  * Login
  */

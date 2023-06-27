@@ -2,7 +2,7 @@ import { addToCart, loadCart } from "./cart.js";
 loadCart()
 
 // debug:
-const a1234567 = {
+/* const a1234567 = {
       productID: "1234567",
       image: "https://cdn.pixabay.com/photo/2015/06/14/05/24/limestone-808589_1280.jpg",
       name: "Limestone",
@@ -21,4 +21,4 @@ const a1234567 = {
       }
     }
 console.log("site: cart")
-addToCart(a1234567)
+addToCart(a1234567) */
