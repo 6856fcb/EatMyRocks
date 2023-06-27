@@ -6,13 +6,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const products = require('./product.js');
 const recipes = require('./recipes.js');
-
-const newstones = [];
-for (const productID in products) {
-  const stone = products[productID];
-  newstones.push(stone);
-}
-console.log(newstones.find(stone => stone.productID === '1234567'));
 /**
  * Login
  */
@@ -262,7 +255,7 @@ app.post('/login', async (req, res) => {
     
           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
           res.cookie('jwt', accessToken)
-          res.send('Logged in successfully')
+          res.status(200).send('Logged in successfully')
       } else {
           res.status(201).send('Benutzername oder Passwort falsch')
       }  
@@ -273,32 +266,26 @@ app.post('/login', async (req, res) => {
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
-  if (token == null) return res.sendStatus(401).send("Please log in")
+  if (token == null) return res.sendStatus(401)
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    console.log("Auth Error: "+ err)
+    console.log(err)
     if (err) return res.sendStatus(403)
     req.user = user
     next()
   })
 }
-//Login Ende
-//Cart
+//Login Ende, Cart:
 
 app.get("/shoppingcart", authenticateToken, (req, res) => {
-  const user = customers.filter(user => user.username === req.user.name)[0];
-  if (user && user.shoppingcart) {
-    res.json(user.shoppingcart);
-  } else {
-    res.status(404).json({ message: "Wow, so empty!" });
-  }
-});
+  res.json(customers.filter(user => user.username === req.user.name)[0].shoppingcart)
+})
 
 app.put("/addProduct", authenticateToken, function(req, res) {
   var product = req.body.product;
   var customer = customers.find(user => user.username === req.user.name);
   if (customer) {
-    var validProduct = newstones.find(p => p.productID === product.productID && p.price === product.price);
+    var validProduct = products.find(p => p.productID === product.productID && p.price === product.price);
     if (validProduct) {
       customer.shoppingcart = customer.shoppingcart.concat(product);
       res.send('Product added to the shopping cart');
@@ -335,7 +322,7 @@ function getTotalPrice(customer) {
   return customer.shoppingcart.reduce((total, product) => total + product.price, 0);
 }
 
-//CArt Ende
+// Cart Ende
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)

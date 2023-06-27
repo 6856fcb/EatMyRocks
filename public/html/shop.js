@@ -1,4 +1,5 @@
 import { ElementBuilder, ParentChildBuilder } from "./builder.js";
+import { addToCart} from "./cart.js";
 
 class ParagraphBuilder extends ParentChildBuilder {
   constructor() {
@@ -35,9 +36,11 @@ function appendStone(stone, element) {
     .append(new ElementBuilder("h2").pluralizedText("Nutritional Value", ""))
     .append(new ListBuilder("ul").list(stone.nutritionalValues))
     .append(new ElementBuilder("h3").text("Price: " + stone.price + "€"))
-    .append(new ElementBuilder("button"))
-    .appendTo(element);}
+    .append(new ElementBuilder("button").text("Add to Cart").with('onclick', () => addToCart(stone)))
+    .appendTo(element);
 
+}
+    //addToCart(stone)
 function loadStones(application) {
   const xhr = new XMLHttpRequest();
   xhr.onload = function () {
