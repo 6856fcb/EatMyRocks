@@ -97,8 +97,12 @@ let currenShoppingCart = []
  * @throws {Error} If there is an error creating the order.
  */
 app.post('/create_order', (req, res) => {
-  let totalPrice = 0.01;
-  console.log(currenShoppingCart)
+  let totalPrice = 0.00
+  if(currenShoppingCart){
+    currenShoppingCart.forEach(price => { totalPrice+=price })
+  }else{
+    totalPrice = 0.01
+  }
 
   get_access_token()
       .then(access_token => {
@@ -281,7 +285,6 @@ app.put("/addProductToShoppingcart", authenticateToken, function(req, res) {
   if(!customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToAdd)){
     customers.filter(c => c.username === req.user.name)[0].shoppingcart.push(itemToAdd)
     currenShoppingCart.push(products[`${itemToAdd}`].price)
-    console.log(products[`${itemToAdd}`].price)
     res.status(200).send("Product added to shoppingcart")
   }else{
     //Wenn mehr Stück eingekauft werden von einem Produkt
@@ -294,7 +297,7 @@ app.delete("/removeProductFromShoppingcart", authenticateToken, function(req, re
     if(customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToRemove)){
       let itemIndex = customers.filter(c => c.username === req.user.name)[0].shoppingcart.indexOf(itemToRemove)
       customers.filter(c => c.username === req.user.name)[0].shoppingcart.splice(itemIndex,1)
-      currenShoppingCart.slice(itemIndex, 1)
+      //
       res.status(200).send("Product removed from shoppingcart")
     }else{
       res.sendStatus(400).send("This product does not exist")
@@ -343,17 +346,3 @@ app.get("/totalPrice/:jwt", (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
 })
-
-function getCookie(name) {
-  let cookieArr = document.cookie.split(";");
-
-  for(let i = 0; i < cookieArr.length; i++) {
-    let cookiePair = cookieArr[i].split("=");
-
-    if(name == cookiePair[0].trim()) {
-      return decodeURIComponent(cookiePair[1]);
-    }
-  }
-
-  return null;
-}
