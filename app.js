@@ -69,36 +69,6 @@ app.get('/recipes', function (req, res){
   res.json(recipeJSON);
 });
 
-/*
-app.get('/product', function (req, res) {
-  const productJSON = Object.values(products);
-  res.json(productJSON);
-})
-
-app.get('/pay', function (req, res){
-  res.render('payment');
-})
-
-app.get('/pp', function (req, res){
-  res.render('privacypolicy');
-})
-
-app.get('/tc', function (req, res){
-  res.render('termsconditions');
-})
-
-app.get('/cu', function (req, res){
-  res.render('contactus');
-})
-
-app.get('/payment', function(req, res) {
-  const filePath = path.join(__dirname, 'public', 'html', 'payment.html');
-  res.sendFile(filePath);
-});
-
-
-*/
-
 //-------------------------------------
 
 
@@ -113,6 +83,7 @@ const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const endpoint_url = environment === 'sandbox' ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com';
 
+let currenShoppingCart = []
 /**
  * Creates an order and returns it as a JSON response.
  * @function
@@ -126,36 +97,39 @@ const endpoint_url = environment === 'sandbox' ? 'https://api-m.sandbox.paypal.c
  * @throws {Error} If there is an error creating the order.
  */
 app.post('/create_order', (req, res) => {
-    get_access_token()
-        .then(access_token => {
-            let order_data_json = {
-                'intent': req.body.intent.toUpperCase(),
-                'purchase_units': [{
-                    'amount': {
-                        'currency_code': 'EUR',
-                        'value': '100.00'
-                    }
-                }]
-            };
-            const data = JSON.stringify(order_data_json)
+  let totalPrice = 0.01;
+  console.log(currenShoppingCart)
 
-            fetch(endpoint_url + '/v2/checkout/orders', { //https://developer.paypal.com/docs/api/orders/v2/#orders_create
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${access_token}`
-                    },
-                    body: data
-                })
-                .then(res => res.json())
-                .then(json => {
-                    res.send(json);
-                }) //Send minimal data to client
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).send(err)
-        })
+  get_access_token()
+      .then(access_token => {
+          let order_data_json = {
+              'intent': req.body.intent.toUpperCase(),
+              'purchase_units': [{
+                  'amount': {
+                      'currency_code': 'EUR',
+                      'value': ((totalPrice > 0 ) ? totalPrice.toString() : '0.01')
+                  }
+              }]
+          };
+          const data = JSON.stringify(order_data_json)
+
+          fetch(endpoint_url + '/v2/checkout/orders', { //https://developer.paypal.com/docs/api/orders/v2/#orders_create
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${access_token}`
+                  },
+                  body: data
+              })
+              .then(res => res.json())
+              .then(json => {
+                  res.send(json);
+              }) //Send minimal data to client
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).send(err)
+      })
 });
 
 /**
@@ -260,6 +234,7 @@ app.post('/login', async (req, res) => {
           const user = {name : username}
     
           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+          //customers.filter(c => c.username === userToAuth.username)[0].shoppingcart[0].forEach(item => currenShoppingCart.push(item.price))
           res.cookie('jwt', accessToken)
           res.send('Logged in successfully')
       } else {
@@ -305,6 +280,8 @@ app.put("/addProductToShoppingcart", authenticateToken, function(req, res) {
 
   if(!customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToAdd)){
     customers.filter(c => c.username === req.user.name)[0].shoppingcart.push(itemToAdd)
+    currenShoppingCart.push(products[`${itemToAdd}`].price)
+    console.log(products[`${itemToAdd}`].price)
     res.status(200).send("Product added to shoppingcart")
   }else{
     //Wenn mehr Stück eingekauft werden von einem Produkt
@@ -317,41 +294,46 @@ app.delete("/removeProductFromShoppingcart", authenticateToken, function(req, re
     if(customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToRemove)){
       let itemIndex = customers.filter(c => c.username === req.user.name)[0].shoppingcart.indexOf(itemToRemove)
       customers.filter(c => c.username === req.user.name)[0].shoppingcart.splice(itemIndex,1)
+      currenShoppingCart.slice(itemIndex, 1)
       res.status(200).send("Product removed from shoppingcart")
     }else{
       res.sendStatus(400).send("This product does not exist")
     }
 });
 
-/**
-app.get("/totalPrice", authenticateToken, async (req, res) => {
 
-  let totalPrice = 0
+app.get("/totalPrice/:jwt", (req, res) => {
 
-  let username = customers.filter(c => c.username === req.user.name)[0].username
+  let totalPrice = 0.00
+
+  /*let username = customers.filter(c => c.username === req.user.name)[0].username
   let password = customers.filter(c => c.username === req.user.name)[0].password
 
-  const user = {name : username}
-  const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+  const user = {name : username}*/
+  const token = req.params.jwt
 
-  const xhr = new XMLHttpRequest()
+  fetch('http://localhost:3000/shoppingcart', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+  })
+  .then(response => {
+      if (response.status === 201) {
+        console.log(res.statusMessage);
+      }else {
+        return response.json();
+      }
+  })
+  .then(data => {
+      data.forEach(item => totalPrice += item.price)
+      res.json(totalPrice)
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
 
-    xhr.onload = function () {
-        if (xhr.status === 201) {
-            res.status(201).send("Shoppingcart is empty")
-        }
-        if (xhr.status === 200){
-            console.log(res.body)
-        }   
-    }
-
-    const url = new URL("/shoppingcart", "http://localhost:3000")
-    if(username != null && password != null){
-      xhr.open("GET", url)
-      xhr.setRequestHeader('Authorization', 'Bearer ${token}')
-      xhr.send()
-    }
-});*/
+});
 
 //Cart Ende
 
@@ -361,3 +343,17 @@ app.get("/totalPrice", authenticateToken, async (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
 })
+
+function getCookie(name) {
+  let cookieArr = document.cookie.split(";");
+
+  for(let i = 0; i < cookieArr.length; i++) {
+    let cookiePair = cookieArr[i].split("=");
+
+    if(name == cookiePair[0].trim()) {
+      return decodeURIComponent(cookiePair[1]);
+    }
+  }
+
+  return null;
+}
