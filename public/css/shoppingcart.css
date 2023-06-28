@@ -1,22 +1,41 @@
+/* Main Container */
 main {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 170px; /* Höhe des Headers anpassen */
-    margin-bottom: 50px;
-  }
-  
-  article {
-    flex-basis: calc(33.33% - 20px);
-    margin: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 170px; /* Höhe des Headers anpassen */
+  margin-bottom: 50px;
+  position: relative; /* Hinzugefügt */
+}
+
+/* Checkout-Button */
+button.checkout-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 auto; /* Hinzugefügt */
+  cursor: pointer;
+  position: absolute; /* Hinzugefügt */
+  bottom: -50px; /* Hinzugefügt */
+  left: 50%; /* Hinzugefügt */
+  transform: translateX(-50%); /* Hinzugefügt */
+}
+
+/* Remove-Button */
+button.remove-button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
   
   h1, h2, h3, p, ul {
     margin: 0;
@@ -45,7 +64,20 @@ main {
     margin-top: 5px;
     font-size: 16px;
   }
+    
+  article {
+    flex-basis: calc(33.33% - 20px);
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+  }
   
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   .h3 {
     margin-top: 5px;
     font-size: 14px;
