@@ -14,6 +14,20 @@ header {
   grid-area: header;
 }
 
+main button {
+  background-color: #4CAF50; 
+  color: white; 
+  border: none;
+  padding: 10px 20px;
+  text-align: center; 
+  text-decoration: none; 
+  font-size: 16px; 
+  margin: 0; 
+  cursor: pointer; 
+  float: right; 
+}
+
+
 .filter-nav {
   grid-area: nav;
   background-color: #f8f8f8;
