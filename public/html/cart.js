@@ -1,9 +1,9 @@
 
 // CART:
 
-export function addToCart(productID) {
+export async function addToCart(productID) {
   const jwt = getCookie('jwt')
-  fetch("/addProductToShoppingcart", {
+  await fetch("/addProductToShoppingcart", {
     method: "PUT",
     headers: {
       'Content-Type': 'application/json',
@@ -22,9 +22,9 @@ export function addToCart(productID) {
   });
 }
 
-export function removeFromCart(productID) {
+export async function removeFromCart(productID) {
   const jwt = getCookie('jwt');
-  fetch("/removeProductFromShoppingcart", {
+  await fetch("/removeProductFromShoppingcart", {
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json',
