@@ -10,7 +10,7 @@
     href="https://cdn.jsdelivr.net/npm/minstyle.io@2.0.1/dist/css/minstyle.io.min.css">
   <script src="https://kit.fontawesome.com/d1c1a361ea.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/index.css">
-  <script src="/paypal/paypalscript.js"></script>
+  <script type="module" src="/paypal/paypalscript.js"></script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -34,7 +34,7 @@
         <div class="col-sm">
           <h2 class="ms-text-center">Rock food</h2>
           <div class="ms-text-center pb-2">
-            <div class="ms-label ms-large ms-action2 ms-light">$100.00 USD</div>
+            <div class="ms-label ms-large ms-action2 ms-light" id="amount"></div>
           </div>
           <div id="alerts" class="ms-text-center"></div>
           <div id="loading" class="spinner-container ms-div-center">
@@ -42,7 +42,7 @@
           </div>
           <div id="content" class="hide">
             <div class="ms-card ms-fill">
-              <div class="ms-card-content">
+              <div class="ms-card-content" id="list">
                 <img src="../images/stone1.jpg" style="width:400px">
               </div>
             </div>
