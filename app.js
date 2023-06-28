@@ -282,13 +282,10 @@ app.get("/shoppingcart", authenticateToken, (req, res) => {
 app.put("/addProductToShoppingcart", authenticateToken, function(req, res) {
   let itemToAdd = req.body.item
 
-  if(!customers.filter(c => c.username === req.user.name)[0].shoppingcart.includes(itemToAdd)){
     customers.filter(c => c.username === req.user.name)[0].shoppingcart.push(itemToAdd)
     currenShoppingCart.push(products[`${itemToAdd}`].price)
     res.status(200).send("Product added to shoppingcart")
-  }else{
-    //Wenn mehr Stück eingekauft werden von einem Produkt
-  }
+  
 });
 
 app.delete("/removeProductFromShoppingcart", authenticateToken, function(req, res) {

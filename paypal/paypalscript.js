@@ -93,3 +93,51 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&
 .catch((error) => {
     console.error(error);
 });
+
+window.onload = function (){
+    const xhr = new XMLHttpRequest();
+    
+    const price = document.getElementById("amount")
+    const listDiv = document.getElementById("list")
+
+    xhr.onload = function () {
+        let products = JSON.parse(xhr.responseText)
+        let totalPrice = 0.00
+        let ol = document.createElement("ol")
+        products.forEach(stone => {
+            let li = document.createElement("li")
+            li.innerHTML = stone.name + " |  " + stone.price + "€"
+            ol.appendChild(li)
+            totalPrice += stone.price
+        })
+        listDiv.appendChild(ol)
+        let span = document.createElement("p")
+        let b = document.createElement("b")
+        b.innerHTML = "Total:" + totalPrice + " €"
+        span.appendChild(b)
+        listDiv.appendChild(span)
+        price.innerHTML = totalPrice + " EUR"
+    };
+
+    const url = new URL("/shoppingcart", "http://localhost:3000")
+    const token = getCookie('jwt')
+
+  
+    xhr.open("GET", url);
+    xhr.setRequestHeader('Authorization', `Bearer ${token}`)
+    xhr.send();
+}
+
+function getCookie(name) {
+    let cookieArr = document.cookie.split(";");
+  
+    for(let i = 0; i < cookieArr.length; i++) {
+      let cookiePair = cookieArr[i].split("=");
+  
+      if(name == cookiePair[0].trim()) {
+        return decodeURIComponent(cookiePair[1]);
+      }
+    }
+  
+    return null;
+}

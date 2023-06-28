@@ -36,13 +36,11 @@ function register(){
             let err = xhr.responseText
             let span = document.getElementById("msg")
             span.innerText = err
-            span.setAttribute("color","red")
         }
         if (xhr.status === 201){
             let msg = xhr.responseText
             let span = document.getElementById("msg")
             span.innerText = msg
-            span.setAttribute("color","red")
         }
 
     }
