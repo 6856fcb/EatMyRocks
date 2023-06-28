@@ -11,7 +11,6 @@ Content-Type: application/json
 
 ###
 
-
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -32,16 +31,13 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/test
-
-###
-
 PUT http://localhost:3000/addProductToShoppingcart
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODgyNjQ1fQ.qF06igFfmpcCZ9mnFKnd-uoiDybplzFW8kM8xJQq0zo
 Content-Type: application/json
 
 {
-    "item": "2345678"
+    "item": "1234560"
+    //"item": "2345678"
 }
 
 ###
@@ -56,5 +52,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/totalPrice
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3ODgyNjQ1fQ.qF06igFfmpcCZ9mnFKnd-uoiDybplzFW8kM8xJQq0zo
+GET http://localhost:3000/totalPrice/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9%2EeyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3OTA1NDc2fQ%2E9QNq8j2TKp-kepT1Yq3pEniABmiB-cDah-Eejlg_tY0
+
+
+###
+
+POST http://localhost:3000/create_order
+Content-Type: application/json
+
+{
+    "intent": "captue",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVyZGFuIiwiaWF0IjoxNjg3OTQ0MzcwfQ.LiHoggTV9iVCAJpLa9TvemkOLa8CReTPXdQApZu14CI"
+}
