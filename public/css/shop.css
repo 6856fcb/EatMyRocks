@@ -14,6 +14,22 @@ header {
   grid-area: header;
 }
 
+main button {
+  background-color: #4CAF50; /* Hintergrundfarbe des Buttons */
+  color: white; /* Textfarbe des Buttons */
+  border: none; /* Keine Rahmen um den Button */
+  padding: 10px 20px; /* Innenabstand des Buttons */
+  text-align: center; /* Zentrierter Text im Button */
+  text-decoration: none; /* Keine Textunterstreichung */
+  display: inline-block; /* Button als Inline-Element anzeigen */
+  font-size: 16px; /* Schriftgröße des Buttons */
+  margin: 0; /* Kein Außenabstand des Buttons */
+  cursor: pointer; /* Zeiger beim Überfahren des Buttons */
+  float: right; /* Rechtsseitige Ausrichtung des Buttons */
+  /* Weitere gewünschte Anpassungen für den Button */
+}
+
+
 .filter-nav {
   grid-area: nav;
   background-color: #f8f8f8;
