@@ -39,11 +39,17 @@ export function removeFromCart(productID) {
       alert("Please log in");
     } else {
       alert("Item removed from cart!");
-      location.reload();
+      removeElementFromDOM(productID);
     }
   });
 }
 
+function removeElementFromDOM(productID) {
+  const element = document.getElementById(productID);
+  if (element) {
+    element.remove();
+  }
+}
 
 export function getCookie(name) {
   let cookieArr = document.cookie.split(";");
